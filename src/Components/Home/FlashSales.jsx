@@ -54,7 +54,7 @@ function FlashSales() {
   ];
   const [index, setIndex] = useState(0);
   const nextSlide = () => {
-    if (index < products.length - 4) {
+    if (index < products.length - 1) {
       setIndex(index + 1);
     }
   };
@@ -66,16 +66,15 @@ function FlashSales() {
   };
 
   return (
-    <div className="py-20 mx-20 border-b">
-      {/* Today's */}
+    <div className="py-20 mx-4 sm:mx-10 lg:mx-20 border-b">
       <div className="flex gap-3 items-center">
         <div className="w-4 h-10 rounded-md bg-red-600"></div>
         <p className="text-red-600 font-bold">Today's</p>
       </div>
 
-      <div className="flex justify-between items-center mt-3">
-        <div className="flex gap-14 items-center font-bold">
-          <h1 className="text-4xl">Flash Sales</h1>
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mt-3 gap-6">
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-14 items-start sm:items-center font-bold">
+          <h1 className="text-3xl sm:text-4xl">Flash Sales</h1>
 
           {/* Timer */}
           <div className="flex gap-3">
@@ -108,7 +107,7 @@ function FlashSales() {
         </div>
 
         {/* Arrows */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 self-end lg:self-auto">
           <div
             onClick={prevSlide}
             className=" w-10 h-10 flex items-center justify-center border rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer"
@@ -134,7 +133,7 @@ function FlashSales() {
           }}
         >
           {products.map((item) => (
-            <div key={item.id} className="w-[30%] p-3">
+            <div key={item.id} className="w-full sm:w-1/2 lg:w-1/4 p-3 flex-shrink-0">
               <div className="p-3 rounded-lg relative">
                 <div className="relative bg-gray-100 pt-5 pb-3 flex items-center justify-center">
                   <img

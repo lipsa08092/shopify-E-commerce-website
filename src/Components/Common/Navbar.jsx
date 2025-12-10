@@ -4,6 +4,9 @@ import { IoSearchSharp } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa6";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { FiUser } from "react-icons/fi";
+
+import {Link} from "react-router-dom";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -32,15 +35,15 @@ function Navbar() {
         </h1>
 
         <nav className="hidden md:flex items-center gap-6 lg:gap-10 font-medium">
-          <p className="cursor-pointer text-gray-800 hover:text-gray-500">
+          <Link to="/" className="cursor-pointer text-gray-800 hover:text-gray-500">
             Home
-          </p>
-          <p className="cursor-pointer text-gray-800 hover:text-gray-500">
+          </Link>
+          <Link to="/contact" className="cursor-pointer text-gray-800 hover:text-gray-500">
             Contact
-          </p>
-          <p className="cursor-pointer text-gray-800 hover:text-gray-500">
+          </Link>
+          <Link to="/about" className="cursor-pointer text-gray-800 hover:text-gray-500">
             About
-          </p>
+          </Link>
           <p className="cursor-pointer text-gray-800 hover:text-gray-500">
             Sign Up
           </p>
@@ -58,7 +61,8 @@ function Navbar() {
 
           <div className="flex items-center gap-4 text-xl cursor-pointer">
             <FaRegHeart className="hover:text-red-500 text-gray-600 text-md" />
-            <AiOutlineShoppingCart className="hover:text-blue-500 text-gray-600" />
+            <AiOutlineShoppingCart className="hover:text-green-500 text-gray-600" />
+            <FiUser className="hover:text-blue-500 text-gray-600" />
           </div>
         </div>
 
