@@ -15,6 +15,8 @@ function BestSelling() {
       title: "The North Coat",
       price: 220,
       oldPrice: 360,
+      star: 5,
+      rating: 65,
     },
     {
       id: 2,
@@ -22,6 +24,8 @@ function BestSelling() {
       title: "Gucci duffle Bag",
       price: 960,
       oldPrice: 1160,
+      start: 4.5,
+      rating: 65,
     },
     {
       id: 3,
@@ -29,6 +33,8 @@ function BestSelling() {
       title: "RGB liquid CPU Cooler",
       price: 160,
       oldPrice: 170,
+      start: 4.5,
+      rating: 65,
     },
     {
       id: 4,
@@ -36,6 +42,8 @@ function BestSelling() {
       title: "Small BookSell",
       price: 360,
       oldPrice: 470,
+      start: 4.5,
+      rating: 65,
     },
   ];
 
@@ -54,37 +62,36 @@ function BestSelling() {
         </button>
       </div>
 
-  
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((item) => (
-            <div key={item.id} className="w-[full]">
-              <div className="p-3 rounded-lg relative  hover:shadow-md transition">
-                <div className="relative bg-gray-100 pt-5 pb-3 flex items-center justify-center">
-                  <img
-                    src={item.img}
-                    className="w-full h-40 sm:h-44 object-contain"
-                    alt=""
-                  />
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {products.map((item) => (
+          <div key={item.id} className="w-[full]">
+            <div className="p-3 rounded-lg relative  hover:shadow-md transition">
+              <div className="relative bg-gray-100 pt-5 pb-3 flex items-center justify-center">
+                <img
+                  src={item.img}
+                  className="w-full h-40 sm:h-44 object-contain"
+                  alt=""
+                />
 
-                  <button className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
-                    Add To Cart
-                  </button>
-                </div>
+                <button className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
+                  Add To Cart
+                </button>
+              </div>
 
-                <IoMdHeartEmpty className="absolute top-6 right-6 text-2xl cursor-pointer bg-white rounded-full hover:text-gray-500" />
-                <IoEye className="absolute top-14 right-6 text-2xl cursor-pointer bg-white rounded-full hover:text-red-500" />
+              <IoMdHeartEmpty className="absolute top-6 right-6 text-2xl cursor-pointer bg-white rounded-full hover:text-gray-500" />
+              <IoEye className="absolute top-14 right-6 text-2xl cursor-pointer bg-white rounded-full hover:text-red-500" />
 
-                <p className="mt-3 text-sm font-medium">{item.title}</p>
+              <p className="mt-3 text-sm font-medium">{item.title}</p>
 
-                <div className="flex gap-3 mt-2">
-                  <p className="text-red-600 font-bold">${item.price}</p>
-                  <p className="text-gray-500 line-through">${item.oldPrice}</p>
-                </div>
+              <div className="flex gap-3 mt-2">
+                <p className="text-red-600 font-bold">${item.price}</p>
+                <p className="text-gray-500 line-through">${item.oldPrice}</p>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+    </div>
   );
 }
 

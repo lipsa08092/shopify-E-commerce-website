@@ -18,6 +18,8 @@ function FlashSales() {
       price: 120,
       oldPrice: 160,
       discount: 40,
+      star:5,
+      rating:88
     },
     {
       id: 2,
@@ -26,6 +28,8 @@ function FlashSales() {
       price: 960,
       oldPrice: 1160,
       discount: 35,
+      star:4,
+      rating:75
     },
     {
       id: 3,
@@ -34,6 +38,8 @@ function FlashSales() {
       price: 370,
       oldPrice: 400,
       discount: 30,
+      star:5,
+      rating:99
     },
     {
       id: 4,
@@ -42,6 +48,8 @@ function FlashSales() {
       price: 375,
       oldPrice: 400,
       discount: 25,
+      star:4.5,
+      rating:99
     },
     {
       id: 5,
@@ -50,6 +58,8 @@ function FlashSales() {
       price: 160,
       oldPrice: 170,
       discount: 26,
+      star:4.5,
+      rating:65
     },
   ];
   const [index, setIndex] = useState(0);
