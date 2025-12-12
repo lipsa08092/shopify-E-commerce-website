@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSearchSharp } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa6";
@@ -19,24 +19,34 @@ function Navbar() {
   const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
+  const menuRef = useRef(null);
 
   useEffect(() => {
-    try {
-      const savedUser = localStorage.getItem("user");
-      if (savedUser && savedUser !== "undefined") {
-        setUser(JSON.parse(savedUser));
-      }
-    } catch (error) {
-      console.log("LocalStorage error:", error);
+    const savedlogin = localStorage.getItem("loggedInUser");
+    if (savedlogin) {
+      const userData = JSON.parse(localStorage.getItem("users"));
+      setUser(userData);
     }
   }, []);
 
   const logout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("loggedInUser");
     setUser(null);
     setShowMenu(false);
     navigate("/signup");
   };
+
+  useEffect(() => {
+    const handleClickOutside =(e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)){
+        setShowMenu(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return() => {
+      document.removeEventListener("mousedown" , handleClickOutside);
+    };
+  }, []);
 
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -122,7 +132,7 @@ function Navbar() {
 
               {/* account dropdown */}
               {showMenu && user && (
-                <div className="absolute right-0 mt-3 bg-gradient-to-tr from-gray-400 via-purple-900 to-gray-700 shadow-xl rounded-lg w-72 py-5 px-5 text-gray-100">
+                <div ref={menuRef} className="absolute right-0 mt-3 bg-gradient-to-tr from-gray-400 via-purple-900 to-gray-700 shadow-xl rounded-lg w-72 py-5 px-5 text-gray-100">
                   <div className="flex ">
                     <AiOutlineUser className="mt-3 text-2xl hover:text-gray-400" />
                     <p
@@ -167,7 +177,7 @@ function Navbar() {
               )}
 
               {!user && showMenu && (
-                <div className="absolute right-0 mt-3 bg-white shadow-xl w-40 py-3 text-sm text-center text-gray-900">
+                <div ref={menuRef} className="absolute right-0 mt-3 bg-white shadow-xl w-40 py-3 text-sm text-center text-gray-900">
                   <p
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                     onClick={() => navigate("/signup")}

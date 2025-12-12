@@ -1,13 +1,67 @@
 import React, { useEffect, useState } from "react";
 
 function Account() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
   useEffect(() => {
-    const savedUser = localStorage.getItem("user");
-    console.log(savedUser);
-    setData(savedUser);
+    const savedUser = localStorage.getItem("loggedInUser");
+
+    if (savedUser) {
+      const saved = JSON.parse(savedUser);
+      setData(saved);
+
+      setFirstName(saved.firstName || "");
+      setLastName(saved.lastName || "");
+      setEmail(saved.email || "");
+      setAddress(saved.address || "");
+    }
   }, []);
+if (!data) return null;
+
+  const handleSave = () => {
+
+    if (newPassword || confirmNewPassword) {
+      if (currentPassword !== data.password) {
+        alert("New password do not match");
+        return;
+      }
+      if (newPassword !== confirmNewPassword) {
+        alert("New passwords do not match!");
+        return;
+      }
+    }
+    const updatedUser = {
+      ...data,
+      firstName,
+      lastName,
+      email,
+      address,
+      password: newPassword ? newPassword : data.password,
+    };
+    localStorage.setItem("loggedInUser", JSON.stringify(updatedUser));
+
+    //Update inside "users"
+    let allUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const index = allUsers.findIndex((a) => a.email === data.email);
+
+    if (index !== -1) {
+      allUsers[index] = updatedUser;
+      localStorage.setItem("users", JSON.stringify(allUsers));
+    }
+
+    setData(updatedUser);
+    alert("profile updated successfully !");
+
+  };
+
 
   return (
     <div className="mx-4 sm:mx-10 lg:mx-20 py-10 lg:py-16">
@@ -17,7 +71,7 @@ function Account() {
         </h1>
         <p className="text-sm mb-10">
           Welcome!
-          <span className="text-red-600 text-sm">Name:{data.name}</span>
+          <span className="text-red-600 text-sm font-medium"> {data.firstName} {data.lastName}</span>
         </p>
       </div>
 
@@ -63,8 +117,10 @@ function Account() {
               <label className="text-sm font-medium">First Name</label>
               <input
                 type="text"
-                className="w-full mt-1 border border-gray-300 p-3 rounded-md text-sm"
                 placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full mt-1 border border-gray-300 p-3 rounded-md text-sm"
               />
             </div>
 
@@ -72,8 +128,10 @@ function Account() {
               <label className="text-sm font-medium">Last Name</label>
               <input
                 type="text"
-                className="w-full mt-1 border border-gray-300 p-3 rounded-md text-sm"
                 placeholder="Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full mt-1 border border-gray-300 p-3 rounded-md text-sm"
               />
             </div>
 
@@ -81,8 +139,10 @@ function Account() {
               <label className="text-sm font-medium">Email</label>
               <input
                 type="email"
+                placeholder="Enter Your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full mt-1 border border-gray-300 p-3 rounded-md text-sm"
-                placeholder="yourmail@gmail.com"
               />
             </div>
 
@@ -90,6 +150,8 @@ function Account() {
               <label className="text-sm font-medium">Address</label>
               <input
                 type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 className="w-full mt-1 border border-gray-300 p-3 rounded-md text-sm"
                 placeholder="City, Country"
               />
@@ -101,23 +163,32 @@ function Account() {
             <input
               type="password"
               placeholder="Current Password"
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
               className="w-full border border-gray-300 p-3 rounded-md text-sm"
             />
             <input
               type="password"
               placeholder="New Password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
               className="w-full border border-gray-300 p-3 rounded-md text-sm"
             />
             <input
               type="password"
               placeholder="Confirm New Password"
+              value={confirmNewPassword}
+              onChange={(e) => setConfirmNewPassword(e.target.value)}
               className="w-full border border-gray-300 p-3 rounded-md text-sm"
             />
           </div>
 
           <div className="flex justify-end items-center gap-4 mt-8">
             <button className="text-gray-800 hover:text-black">Cancel</button>
-            <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md">
+            <button
+              onClick={handleSave}
+              className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md"
+            >
               Save Changes
             </button>
           </div>

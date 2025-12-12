@@ -1,26 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import banner from "../../assects/signup-banner.jpg";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-  const handleLogin = () => {
-    const savedUser = localStorage.getItem("user");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    if (!savedUser) {
+  const handleLogin = () => {
+    const savedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    if (!savedUsers) {
       alert("No account found! Please sign up.");
       return;
     }
+    const foundUser = savedUsers.find((a) => a.email === email && a.password === password
+    );
 
-    const stored = JSON.parse(savedUser);
-    const email = document.getElementById("loginEmail").value;
-
-    if (stored.email !== email) {
-      alert("Invalid Email!");
+    if (!foundUser) {
+      alert("Invalid Email or Password!");
       return;
     }
+    localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
     alert("Login Successful!");
     navigate("/");
+    window.location.reload();
   };
 
   return (
@@ -41,14 +45,17 @@ function Login() {
           <p className="text-gray-900 mb-6">Enter Your details below</p>
           <div className="space-y-5">
             <input
-              id="loginEmail"
               type="email"
               placeholder="Email or Phone Number"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full border-b border-gray-400 py-2 outline-none text-gray-700"
             />
             <input
               type="password"
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="text-gray-400 w-full border-b border-gray-400 py-2 outline-none"
             />
           </div>

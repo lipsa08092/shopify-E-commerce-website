@@ -7,24 +7,31 @@ function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-//   const [user, setUser] = useState({
-//     name: "",
-//     email: "",
-//     password: "",
-//   });
 
   const navigate = useNavigate();
 
   const handleSignup = (e) => {
     e.preventDefault();
-    const data={
-        name, email,password
-    }
+    const data = {
+      firstName: name.split(" ")[0],
+      lastName: name.split(" ")[1] || "",
+      email,
+      password,
+      address: "",
+    };
     if (!name || !email || !password) {
       alert("Please fill all fields");
       return;
     }
-    localStorage.setItem("user", JSON.stringify(data));
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const exists = users.find((a) => a.email === email);
+    if (exists) {
+      alert("this emial is already registered !");
+      return;
+    }
+    users.push(data);
+    localStorage.setItem("users", JSON.stringify(users));
     alert("Account Created Successfully!");
     navigate("/");
   };
