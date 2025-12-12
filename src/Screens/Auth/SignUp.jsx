@@ -24,7 +24,6 @@ function SignUp() {
       return;
     }
     let users = JSON.parse(localStorage.getItem("users")) || [];
-
     const exists = users.find((a) => a.email === email);
     if (exists) {
       alert("this emial is already registered !");
@@ -33,8 +32,12 @@ function SignUp() {
     users.push(data);
     localStorage.setItem("users", JSON.stringify(users));
     alert("Account Created Successfully!");
-    navigate("/");
+    navigate("/login");
   };
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
 
   return (
     <div className="pr-20 py-10">
@@ -90,6 +93,7 @@ function SignUp() {
               Already have an account?
               <Link
                 to="/login"
+                onClick={handleClick}
                 className="underline text-gray-700 hover:text-gray-800 cursor-pointer ml-1"
               >
                 Log in

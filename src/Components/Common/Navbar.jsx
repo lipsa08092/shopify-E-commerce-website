@@ -10,7 +10,6 @@ import { FiShoppingBag } from "react-icons/fi";
 import { ImCancelCircle } from "react-icons/im";
 import { FaRegStar } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
-import logo from "../../assects/Shopify-logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
@@ -73,12 +72,9 @@ function Navbar() {
 
       {/* main navbar */}
       <div className="flex justify-between items-center bg-white px-3 sm:px-10 md:px-16 lg:px-20 py-4 shadow-md">
-        <div className="flex">
-          <img src={logo} alt="logo"  className="w-16 h-8 mt-1"/>
-        <h1 className="text-lg sm:text-xl md:text-3xl font-semibold text-gray-800">
-          Sh<span className="text-green-500">opi</span>fy
+        <h1 className="text-lg sm:text-xl md:text-3xl font-bold text-gray-800">
+          Sh<span className="text-red-600">opi</span>fy
         </h1>
-        </div>
 
         <nav className="hidden md:flex items-center gap-6 lg:gap-10 font-medium">
           <Link
@@ -167,7 +163,10 @@ function Navbar() {
                   <div className="flex">
                     <BiLogOut className="mt-3 text-2xl hover:text-red-600 "/>
                     <p
-                      onClick={logout}
+                      onClick={() => {
+                        logout();
+                        handleClick();
+                      }}
                       className="px-4 py-2 cursor-pointer  hover:text-red-600"
                     >
                       Logout
@@ -180,7 +179,9 @@ function Navbar() {
                 <div ref={menuRef} className="absolute right-0 mt-3 bg-white shadow-xl w-40 py-3 text-sm text-center text-gray-900">
                   <p
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    onClick={() => navigate("/signup")}
+                    onClick={() => {navigate("/signup")
+                      handleClick();}
+                    }
                   >
                     Login / SignUp
                   </p>
@@ -209,10 +210,10 @@ function Navbar() {
           </div>
           <div className="flex  justify-between">
             <div className="flex gap-20 text-gray-800 font-medium text-base">
-              <p className="hover:text-gray-500">Home</p>
-              <p className="hover:text-gray-500">Contact</p>
-              <p className="hover:text-gray-500">About</p>
-              <p className="hover:text-gray-500">Sign Up</p>
+              <Link to="/" className="hover:text-gray-500">Home</Link>
+              <Link to="/contact" className="hover:text-gray-500">Contact</Link>
+              <Link to="/about" className="hover:text-gray-500">About</Link>
+              <Link to="signup" className="hover:text-gray-500">Sign Up</Link>
             </div>
 
             <div className="flex items-center gap-6 text-xl pt-2">

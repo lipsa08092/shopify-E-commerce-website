@@ -8,6 +8,8 @@ import Contact from "./Screens/User/Contact";
 import SignUp from "./Screens/Auth/SignUp";
 import Login from "./Screens/Auth/Login";
 import Account from "./Screens/NonAuth/Account";
+import Error from "./Screens/NonAuth/Error";
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +21,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/404error" element={<Error />} />
       </Routes>
       <Footer />
     </BrowserRouter>

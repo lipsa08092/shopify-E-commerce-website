@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Account() {
   const [data, setData] = useState(null);
@@ -10,6 +11,7 @@ function Account() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedUser = localStorage.getItem("loggedInUser");
@@ -24,10 +26,13 @@ function Account() {
       setAddress(saved.address || "");
     }
   }, []);
-if (!data) return null;
+
+if (!data) {
+  navigate("/error");
+  return null;
+}
 
   const handleSave = () => {
-
     if (newPassword || confirmNewPassword) {
       if (currentPassword !== data.password) {
         alert("New password do not match");

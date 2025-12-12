@@ -14,7 +14,8 @@ function Login() {
       alert("No account found! Please sign up.");
       return;
     }
-    const foundUser = savedUsers.find((a) => a.email === email && a.password === password
+    const foundUser = savedUsers.find(
+      (a) => a.email === email && a.password === password
     );
 
     if (!foundUser) {
@@ -25,6 +26,9 @@ function Login() {
     alert("Login Successful!");
     navigate("/");
     window.location.reload();
+  };
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -61,7 +65,10 @@ function Login() {
           </div>
           <div className="flex items-center justify-between mt-8">
             <button
-              onClick={handleLogin}
+              onClick={() => {
+                handleClick();
+                handleLogin();
+              }}
               className="py-2 px-6 text-sm text-white rounded-sm bg-red-600 hover:bg-red-700 transition"
             >
               Log In
