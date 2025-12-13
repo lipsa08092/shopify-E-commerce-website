@@ -1,51 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
 
-import sweater from "../../assects/sweater.png";
-import bag from "../../assects/bag.png";
-import cabinet from "../../assects/cabinet.png";
-import Speaker from "../../assects/Speaker.png";
-
 function BestSelling() {
-  const products = [
-    {
-      id: 1,
-      img: sweater,
-      title: "The North Coat",
-      price: 220,
-      oldPrice: 360,
-      star: 5,
-      rating: 65,
-    },
-    {
-      id: 2,
-      img: bag,
-      title: "Gucci duffle Bag",
-      price: 960,
-      oldPrice: 1160,
-      start: 4.5,
-      rating: 65,
-    },
-    {
-      id: 3,
-      img: Speaker,
-      title: "RGB liquid CPU Cooler",
-      price: 160,
-      oldPrice: 170,
-      start: 4.5,
-      rating: 65,
-    },
-    {
-      id: 4,
-      img: cabinet,
-      title: "Small BookSell",
-      price: 360,
-      oldPrice: 470,
-      start: 4.5,
-      rating: 65,
-    },
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+    setProducts(storedProducts.slice(5,9));
+  }, []);
 
   return (
     <div className="py-20 px-5 sm:px-10 lg:px-20">
@@ -85,7 +48,9 @@ function BestSelling() {
 
               <div className="flex gap-3 mt-2">
                 <p className="text-red-600 font-bold">${item.price}</p>
-                <p className="text-gray-500 line-through">${item.oldPrice}</p>
+                <p className="text-gray-500 line-through">
+                  {item.oldPrice && `$${item.oldPrice}`}
+                </p>
               </div>
             </div>
           </div>

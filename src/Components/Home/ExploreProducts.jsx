@@ -1,85 +1,15 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
 
-import chocolate from "../../assects/chocolate.jpg";
-import camera from "../../assects/camera.png";
-import laptop from "../../assects/laptop.png";
-import cosmetics from "../../assects/cosmetics.png";
-import car from "../../assects/car.png";
-import shoes from "../../assects/shoes.png";
-import remote from "../../assects/remote.png";
-import jacket from "../../assects/jacket.png";
 
 function ExploreProducts() {
-  const products = [
-    {
-      id: 1,
-      img: chocolate,
-      title: "Breed Dry Dog Food",
-      price: 100,
-      start: 3,
-      rating: 35,
-    },
-    {
-      id: 2,
-      img: camera,
-      title: "CANON EOS DSLR Camera",
-      price: 360,
-      start: 4,
-      rating: 95,
-    },
-    {
-      id: 3,
-      img: laptop,
-      title: "ASUS FHD Gaming Laptop",
-      price: 700,
-      start: 5,
-      rating: 325,
-    },
-    {
-      id: 4,
-      img: cosmetics,
-      title: "Curology Product Set",
-      price: 500,
-      start: 4,
-      rating: 145,
-    },
-    {
-      id: 5,
-      img: car,
-      title: "Kids Electric Car",
-      price: 960,
-      arrival: "NEW",
-      start: 5,
-      rating: 65,
-    },
-    {
-      id: 6,
-      img: shoes,
-      title: "Jr. Zoom Soccer Cleats",
-      price: 1160,
-      start: 5,
-      rating: 35,
-    },
-    {
-      id: 7,
-      img: remote,
-      title: "GP11 Shooter USB Gamepad",
-      price: 660,
-      arrival: "NEW",
-      start: 4.5,
-      rating: 55,
-    },
-    {
-      id: 8,
-      img: jacket,
-      title: "Quilted Satin Jacket",
-      price: 660,
-      start: 4.5,
-      rating: 55,
-    },
-  ];
+ const [products, setProducts] = useState([]);
+  
+ useEffect(()=> {
+  const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+  setProducts(storedProducts.slice(8,16));
+ }, []);
 
   return (
     <div className="py-20 px-5 sm:px-10 lg:px-20">

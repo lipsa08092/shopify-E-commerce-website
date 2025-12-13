@@ -35,7 +35,7 @@ if (!data) {
   const handleSave = () => {
     if (newPassword || confirmNewPassword) {
       if (currentPassword !== data.password) {
-        alert("New password do not match");
+        alert("Current password is incorrect");
         return;
       }
       if (newPassword !== confirmNewPassword) {
@@ -57,7 +57,7 @@ if (!data) {
     let allUsers = JSON.parse(localStorage.getItem("users")) || [];
     const index = allUsers.findIndex((a) => a.email === data.email);
 
-    if (index !== -1) {
+    if (index >= 0) {
       allUsers[index] = updatedUser;
       localStorage.setItem("users", JSON.stringify(allUsers));
     }

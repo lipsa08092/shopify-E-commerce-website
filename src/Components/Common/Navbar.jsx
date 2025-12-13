@@ -1,4 +1,4 @@
-import React, { useEffect, useState , useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSearchSharp } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa6";
@@ -10,7 +10,7 @@ import { FiShoppingBag } from "react-icons/fi";
 import { ImCancelCircle } from "react-icons/im";
 import { FaRegStar } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -36,14 +36,14 @@ function Navbar() {
   };
 
   useEffect(() => {
-    const handleClickOutside =(e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)){
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
         setShowMenu(false);
       }
-    }
+    };
     document.addEventListener("mousedown", handleClickOutside);
-    return() => {
-      document.removeEventListener("mousedown" , handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -77,34 +77,50 @@ function Navbar() {
         </h1>
 
         <nav className="hidden md:flex items-center gap-6 lg:gap-10 font-medium">
-          <Link
+          <NavLink
             to="/"
             onClick={handleClick}
-            className="cursor-pointer text-gray-800 hover:text-gray-500"
+            className={({ isActive }) =>
+              `cursor-pointer hover:text-gray-500 ${
+                isActive ? "text-[#811bc5] underline font-bold" : "text-gray-800"
+              }`
+            }
           >
             Home
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/contact"
             onClick={handleClick}
-            className="cursor-pointer text-gray-800 hover:text-gray-500"
+            className={({ isActive }) =>
+              `cursor-pointer hover:text-gray-500 ${
+                isActive ? "text-[#811bc5] underline font-bold" : "text-gray-800"
+              }`
+            }
           >
             Contact
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/about"
             onClick={handleClick}
-            className="cursor-pointer text-gray-800 hover:text-gray-500"
+            className={({ isActive }) =>
+              `cursor-pointer hover:text-gray-500 ${
+                isActive ? "text-[#811bc5] underline font-bold" : "text-gray-800"
+              }`
+            }
           >
             About
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="signup"
             onClick={handleClick}
-            className="cursor-pointer text-gray-800 hover:text-gray-500"
+            className={({ isActive }) =>
+              `cursor-pointer hover:text-gray-500 ${
+                isActive ? "text-[#811bc5] underline font-bold" : "text-gray-800"
+              }`
+            }
           >
             Sign Up
-          </Link>
+          </NavLink>
         </nav>
 
         <div className="hidden md:flex items-center gap-5">
@@ -128,40 +144,43 @@ function Navbar() {
 
               {/* account dropdown */}
               {showMenu && user && (
-                <div ref={menuRef} className="absolute right-0 mt-3 bg-gradient-to-tr from-gray-400 via-purple-900 to-gray-700 shadow-xl rounded-lg w-72 py-5 px-5 text-gray-100">
+                <div
+                  ref={menuRef}
+                  className="absolute right-0 mt-3 bg-gradient-to-tr from-gray-400 via-purple-900 to-gray-700 shadow-xl rounded-lg w-72 py-5 px-5 text-gray-100"
+                >
                   <div className="flex ">
                     <AiOutlineUser className="mt-3 text-2xl hover:text-gray-400" />
                     <p
                       className="px-4 py-2  cursor-pointer hover:text-gray-400 font-medium"
-                      onClick={() =>{navigate("/account")
+                      onClick={() => {
+                        navigate("/account");
                         handleClick();
-                      }
-                    }
+                      }}
                     >
                       Manage My Account
                     </p>
                   </div>
 
                   <div className="flex">
-                    <FiShoppingBag className="mt-3 text-xl hover:text-gray-400"/>
+                    <FiShoppingBag className="mt-3 text-xl hover:text-gray-400" />
                     <p className="px-4 py-2 cursor-pointer hover:text-gray-400 font-medium">
                       My Orders
                     </p>
                   </div>
                   <div className="flex">
-                    <ImCancelCircle className="mt-3 text-xl hover:text-gray-400"/>
+                    <ImCancelCircle className="mt-3 text-xl hover:text-gray-400" />
                     <p className="px-4 py-2 cursor-pointer hover:text-gray-400 font-medium">
                       My Cancellations
                     </p>
                   </div>
                   <div className="flex">
-                    <FaRegStar className="mt-3 text-2xl hover:text-gray-400"/>
+                    <FaRegStar className="mt-3 text-2xl hover:text-gray-400" />
                     <p className="px-4 py-2  cursor-pointer hover:text-gray-400 font-medium">
                       My Reviews
                     </p>
                   </div>
                   <div className="flex">
-                    <BiLogOut className="mt-3 text-2xl hover:text-red-600 "/>
+                    <BiLogOut className="mt-3 text-2xl hover:text-red-600 " />
                     <p
                       onClick={() => {
                         logout();
@@ -176,12 +195,16 @@ function Navbar() {
               )}
 
               {!user && showMenu && (
-                <div ref={menuRef} className="absolute right-0 mt-3 bg-white shadow-xl w-40 py-3 text-sm text-center text-gray-900">
+                <div
+                  ref={menuRef}
+                  className="absolute right-0 mt-3 bg-white shadow-xl w-40 py-3 text-sm text-center text-gray-900"
+                >
                   <p
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    onClick={() => {navigate("/signup")
-                      handleClick();}
-                    }
+                    onClick={() => {
+                      navigate("/signup");
+                      handleClick();
+                    }}
                   >
                     Login / SignUp
                   </p>
@@ -210,10 +233,18 @@ function Navbar() {
           </div>
           <div className="flex  justify-between">
             <div className="flex gap-20 text-gray-800 font-medium text-base">
-              <Link to="/" className="hover:text-gray-500">Home</Link>
-              <Link to="/contact" className="hover:text-gray-500">Contact</Link>
-              <Link to="/about" className="hover:text-gray-500">About</Link>
-              <Link to="signup" className="hover:text-gray-500">Sign Up</Link>
+              <Link to="/" className="hover:text-gray-500">
+                Home
+              </Link>
+              <Link to="/contact" className="hover:text-gray-500">
+                Contact
+              </Link>
+              <Link to="/about" className="hover:text-gray-500">
+                About
+              </Link>
+              <Link to="signup" className="hover:text-gray-500">
+                Sign Up
+              </Link>
             </div>
 
             <div className="flex items-center gap-6 text-xl pt-2">

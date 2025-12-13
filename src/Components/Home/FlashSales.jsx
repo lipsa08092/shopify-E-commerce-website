@@ -1,68 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
 
-import Chair from "../../assects/chair.png";
-import Computer from "../../assects/computer.png";
-import Keyboard from "../../assects/keyboard.png";
-import Videogame from "../../assects/videogame.png";
-import Speaker from "../../assects/Speaker.png";
-
 function FlashSales() {
-  const products = [
-    {
-      id: 1,
-      img: Videogame,
-      title: "HAVIT HV-G92 Gamepad",
-      price: 120,
-      oldPrice: 160,
-      discount: 40,
-      star:5,
-      rating:88
-    },
-    {
-      id: 2,
-      img: Keyboard,
-      title: "AK-900 Wired Keyboard",
-      price: 960,
-      oldPrice: 1160,
-      discount: 35,
-      star:4,
-      rating:75
-    },
-    {
-      id: 3,
-      img: Computer,
-      title: "IPS LCD Gaming Monitor",
-      price: 370,
-      oldPrice: 400,
-      discount: 30,
-      star:5,
-      rating:99
-    },
-    {
-      id: 4,
-      img: Chair,
-      title: "S-Series Comfort Chair",
-      price: 375,
-      oldPrice: 400,
-      discount: 25,
-      star:4.5,
-      rating:99
-    },
-    {
-      id: 5,
-      img: Speaker,
-      title: "RGB liquid CPU Cooler",
-      price: 160,
-      oldPrice: 170,
-      discount: 26,
-      star:4.5,
-      rating:65
-    },
-  ];
+  const [products, setProducts] = useState([]);
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+    setProducts(storedProducts.slice(0, 5));
+  }, []);
+
   const nextSlide = () => {
     if (index < products.length - 1) {
       setIndex(index + 1);
@@ -143,7 +92,10 @@ function FlashSales() {
           }}
         >
           {products.map((item) => (
-            <div key={item.id} className="w-full sm:w-1/2 lg:w-1/4 p-3 flex-shrink-0">
+            <div
+              key={item.id}
+              className="w-full sm:w-1/2 lg:w-1/4 p-3 flex-shrink-0"
+            >
               <div className="p-3 rounded-lg relative">
                 <div className="relative bg-gray-100 pt-5 pb-3 flex items-center justify-center">
                   <img
@@ -168,7 +120,9 @@ function FlashSales() {
 
                 <div className="flex gap-3 mt-2">
                   <p className="text-red-600 font-bold">${item.price}</p>
-                  <p className="text-gray-500 line-through">${item.oldPrice}</p>
+                  <p className="text-gray-500 line-through">
+                    {item.oldPrice && `$${item.oldPrice}`}
+                  </p>
                 </div>
               </div>
             </div>

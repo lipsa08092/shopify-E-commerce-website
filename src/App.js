@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Common/Navbar";
 import Home from "./Screens/User/Home";
@@ -9,8 +9,15 @@ import SignUp from "./Screens/Auth/SignUp";
 import Login from "./Screens/Auth/Login";
 import Account from "./Screens/NonAuth/Account";
 import Error from "./Screens/NonAuth/Error";
+import { products } from "./Data/Products";
 
 function App() {
+  useEffect(() => {
+    if (!localStorage.getItem("products")) {
+      localStorage.setItem("products", JSON.stringify(products));
+    }
+  }, []);
+  
   return (
     <BrowserRouter>
       <Navbar />
