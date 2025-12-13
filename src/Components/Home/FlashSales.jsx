@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
-import { IoMdHeartEmpty } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
+import useWishlist from "../Hooks/useWishlist";
+import Rating from "../../Data/Rating";
 
 function FlashSales() {
   const [products, setProducts] = useState([]);
   const [index, setIndex] = useState(0);
+  const { wishlist, toggleWishlist} = useWishlist();
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -113,10 +116,22 @@ function FlashSales() {
                   -{item.discount}%
                 </p>
 
-                <IoMdHeartEmpty className="absolute top-4 right-4 text-2xl cursor-pointer bg-white rounded-full hover:text-gray-500" />
+                {wishlist.find((p) => p.id === item.id) ? (
+                  <IoMdHeart
+                    onClick={() => toggleWishlist(item)}
+                    className="absolute top-4 right-4 text-2xl cursor-pointer bg-white rounded-full text-red-600"
+                  />
+                ) : (
+                  <IoMdHeartEmpty
+                    onClick={() => toggleWishlist(item)}
+                    className="absolute top-4 right-4 text-2xl cursor-pointer bg-white rounded-full text-gray-400"
+                  />
+                )}
+
                 <IoEye className="absolute top-12 right-4 text-2xl cursor-pointer bg-white rounded-full hover:text-red-500" />
 
                 <p className="mt-3 text-sm">{item.title}</p>
+                <Rating star={item.star} rating={item.rating} />
 
                 <div className="flex gap-3 mt-2">
                   <p className="text-red-600 font-bold">${item.price}</p>

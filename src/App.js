@@ -10,6 +10,7 @@ import Login from "./Screens/Auth/Login";
 import Account from "./Screens/NonAuth/Account";
 import Error from "./Screens/NonAuth/Error";
 import { products } from "./Data/Products";
+import Wishlist from "./Screens/User/Wishlist";
 
 function App() {
   useEffect(() => {
@@ -17,7 +18,7 @@ function App() {
       localStorage.setItem("products", JSON.stringify(products));
     }
   }, []);
-  
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -28,6 +29,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/404error" element={<Error />} />
       </Routes>
       <Footer />

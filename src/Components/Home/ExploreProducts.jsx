@@ -1,15 +1,29 @@
-import React,{useEffect, useState} from "react";
-import { IoMdHeartEmpty } from "react-icons/io";
+import React, { useEffect, useState } from "react";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
-
+import Rating from "../../Data/Rating";
+import useWishlist from "../Hooks/useWishlist";
 
 function ExploreProducts() {
- const [products, setProducts] = useState([]);
-  
- useEffect(()=> {
-  const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
-  setProducts(storedProducts.slice(8,16));
- }, []);
+  const [products, setProducts] = useState([]);
+  const [allproducts, setAllProducts] = useState([]);
+  const [viewAll, setViewAll] = useState([]);
+  const { wishlist, toggleWishlist } = useWishlist();
+
+  useEffect(() => {
+    const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+    setProducts(storedProducts.slice(8, 16));
+    setAllProducts(storedProducts);
+  }, []);
+
+  const handleViewAll = () => {
+    if (viewAll) {
+      setProducts(allproducts.slice(8, 16));
+    } else {
+      setProducts(allproducts);
+    }
+    setViewAll(!viewAll);
+  };
 
   return (
     <div className="py-20 px-5 sm:px-10 lg:px-20">
@@ -21,8 +35,11 @@ function ExploreProducts() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-3 gap-4">
         <h1 className="text-4xl">Explore Our Products</h1>
 
-        <button className="text-sm text-gray-100 px-5 py-2 bg-red-500 hover:bg-red-600 rounded-md">
-          View All
+        <button
+          onClick={handleViewAll}
+          className="text-sm text-gray-100 px-5 py-2 bg-red-500 hover:bg-red-600 rounded-md"
+        >
+          {viewAll ? "Close" : "View All"}
         </button>
       </div>
 
@@ -51,10 +68,21 @@ function ExploreProducts() {
               </p>
             )}
 
-            <IoMdHeartEmpty className="absolute top-6 right-6 text-2xl cursor-pointer bg-white rounded-full hover:text-gray-500" />
+            {wishlist.find((p) => p.id === item.id) ? (
+              <IoMdHeart
+                onClick={() => toggleWishlist(item)}
+                className="absolute top-6 right-6 text-2xl cursor-pointer bg-white rounded-full text-red-600"
+              />
+            ) : (
+              <IoMdHeartEmpty
+                onClick={() => toggleWishlist(item)}
+                className="absolute top-6 right-6 text-2xl cursor-pointer bg-white rounded-full text-gray-400"
+              />
+            )}
             <IoEye className="absolute top-14 right-6 text-2xl cursor-pointer bg-white rounded-full hover:text-red-500" />
 
             <p className="mt-3 text-sm font-medium">{item.title}</p>
+            <Rating star={item.star} rating={item.rating} />
 
             <div className="flex gap-3 mt-2">
               <p className="text-red-600 font-bold">${item.price}</p>
@@ -63,8 +91,11 @@ function ExploreProducts() {
         ))}
       </div>
       <div className="flex justify-center mt-10">
-        <button className="bg-red-600 text-white px-8 py-3 rounded-md">
-          View All Products
+        <button
+          onClick={handleViewAll}
+          className="bg-red-600 text-white px-8 py-3 rounded-md"
+        >
+          {viewAll ? "Go Back" : "View All Products"}
         </button>
       </div>
     </div>

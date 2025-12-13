@@ -16,10 +16,12 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [user, setUser] = useState(null);
+  const [wishlistCount, setWishlistCount] = useState(0);
 
   const navigate = useNavigate();
   const menuRef = useRef(null);
 
+  //login
   useEffect(() => {
     const savedlogin = localStorage.getItem("loggedInUser");
     if (savedlogin) {
@@ -35,6 +37,7 @@ function Navbar() {
     navigate("/signup");
   };
 
+  //dropdown
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -50,6 +53,17 @@ function Navbar() {
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  //wishlist
+  useEffect(() => {
+    const updateWishlist = () => {
+      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      setWishlistCount(wishlist.length);
+    };
+    updateWishlist();
+    window.addEventListener("wishlistUpdated", updateWishlist);
+    return () => window.removeEventListener("wishlistUpdated", updateWishlist);
+  }, []);
 
   return (
     <div className="w-full sticky top-0 z-50">
@@ -82,7 +96,9 @@ function Navbar() {
             onClick={handleClick}
             className={({ isActive }) =>
               `cursor-pointer hover:text-gray-500 ${
-                isActive ? "text-[#811bc5] underline font-bold" : "text-gray-800"
+                isActive
+                  ? "text-[#811bc5] underline font-bold"
+                  : "text-gray-800"
               }`
             }
           >
@@ -93,7 +109,9 @@ function Navbar() {
             onClick={handleClick}
             className={({ isActive }) =>
               `cursor-pointer hover:text-gray-500 ${
-                isActive ? "text-[#811bc5] underline font-bold" : "text-gray-800"
+                isActive
+                  ? "text-[#811bc5] underline font-bold"
+                  : "text-gray-800"
               }`
             }
           >
@@ -104,7 +122,9 @@ function Navbar() {
             onClick={handleClick}
             className={({ isActive }) =>
               `cursor-pointer hover:text-gray-500 ${
-                isActive ? "text-[#811bc5] underline font-bold" : "text-gray-800"
+                isActive
+                  ? "text-[#811bc5] underline font-bold"
+                  : "text-gray-800"
               }`
             }
           >
@@ -115,7 +135,9 @@ function Navbar() {
             onClick={handleClick}
             className={({ isActive }) =>
               `cursor-pointer hover:text-gray-500 ${
-                isActive ? "text-[#811bc5] underline font-bold" : "text-gray-800"
+                isActive
+                  ? "text-[#811bc5] underline font-bold"
+                  : "text-gray-800"
               }`
             }
           >
@@ -134,7 +156,18 @@ function Navbar() {
           </div>
 
           <div className="flex items-center gap-4 text-xl cursor-pointer">
-            <FaRegHeart className="hover:text-red-500 text-gray-600 text-md cursor-pointer" />
+            <div className="relative">
+              <Link to="/wishlist" onClick={handleClick}>
+                <FaRegHeart className="hover:text-red-500 text-gray-600 text-md cursor-pointer" />
+              </Link>
+
+              {wishlistCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                  {wishlistCount}
+                </span>
+              )}
+            </div>
+
             <AiOutlineShoppingCart className="hover:text-green-500 text-gray-600 cursor-pointer" />
             <div className="relative">
               <FiUser
