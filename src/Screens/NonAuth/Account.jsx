@@ -27,10 +27,10 @@ function Account() {
     }
   }, []);
 
-if (!data) {
-  navigate("/error");
-  return null;
-}
+  if (!data) {
+    navigate("/error");
+    return null;
+  }
 
   const handleSave = () => {
     if (newPassword || confirmNewPassword) {
@@ -64,9 +64,7 @@ if (!data) {
 
     setData(updatedUser);
     alert("profile updated successfully !");
-
   };
-
 
   return (
     <div className="mx-4 sm:mx-10 lg:mx-20 py-10 lg:py-16">
@@ -76,7 +74,10 @@ if (!data) {
         </h1>
         <p className="text-sm mb-10">
           Welcome!
-          <span className="text-red-600 text-sm font-medium"> {data.firstName} {data.lastName}</span>
+          <span className="text-red-600 text-sm font-medium">
+            {" "}
+            {data.firstName} {data.lastName}
+          </span>
         </p>
       </div>
 

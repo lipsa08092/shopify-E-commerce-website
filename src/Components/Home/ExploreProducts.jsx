@@ -3,12 +3,14 @@ import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
 import Rating from "../../Data/Rating";
 import useWishlist from "../Hooks/useWishlist";
+import useCart from "../Hooks/useCart";
 
 function ExploreProducts() {
   const [products, setProducts] = useState([]);
   const [allproducts, setAllProducts] = useState([]);
   const [viewAll, setViewAll] = useState([]);
   const { wishlist, toggleWishlist } = useWishlist();
+  const { addToCart} = useCart();
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -58,7 +60,9 @@ function ExploreProducts() {
                 alt=""
               />
 
-              <button className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
+              <button 
+              onClick={() => addToCart(item)}
+              className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
                 Add To Cart
               </button>
             </div>

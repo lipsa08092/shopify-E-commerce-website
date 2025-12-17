@@ -17,6 +17,7 @@ function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const [user, setUser] = useState(null);
   const [wishlistCount, setWishlistCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
 
   const navigate = useNavigate();
   const menuRef = useRef(null);
@@ -63,6 +64,17 @@ function Navbar() {
     updateWishlist();
     window.addEventListener("wishlistUpdated", updateWishlist);
     return () => window.removeEventListener("wishlistUpdated", updateWishlist);
+  }, []);
+  
+  //cart
+  useEffect(() => {
+    const updateCart = () => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      setCartCount(cart.length);
+    };
+    updateCart();
+    window.addEventListener("cartUpdated", updateCart);
+    return () => window.removeEventListener("cartUpdated", updateCart);
   }, []);
 
   return (
@@ -168,7 +180,17 @@ function Navbar() {
               )}
             </div>
 
-            <AiOutlineShoppingCart className="hover:text-green-500 text-gray-600 cursor-pointer" />
+            <div className="relative">
+              <Link to="/cart" onClick={handleClick}>
+                <AiOutlineShoppingCart className="hover:text-green-500 text-gray-600 cursor-pointer" />
+              </Link>
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                  {cartCount}
+                </span>
+              )}
+            </div>
+
             <div className="relative">
               <FiUser
                 className="cursor-pointer"

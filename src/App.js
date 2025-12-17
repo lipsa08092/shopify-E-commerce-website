@@ -11,6 +11,8 @@ import Account from "./Screens/NonAuth/Account";
 import Error from "./Screens/NonAuth/Error";
 import { products } from "./Data/Products";
 import Wishlist from "./Screens/User/Wishlist";
+import Cart from "./Screens/User/Cart";
+import Checkout from "./Screens/NonAuth/Checkout";
 
 function App() {
   useEffect(() => {
@@ -30,6 +32,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/404error" element={<Error />} />
       </Routes>
       <Footer />

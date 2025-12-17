@@ -3,12 +3,14 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Rating from "../../Data/Rating";
 import { IoEye } from "react-icons/io5";
+import useCart from "../../Components/Hooks/useCart";
 
 function Wishlist() {
   const [wishlist, setWishlist] = useState([]);
   const [products, setProducts] = useState([]);
   const [seeAll, setSeeAll] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
+  const {addToCart} = useCart();
 
   useEffect(() => {
     const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -26,16 +28,31 @@ function Wishlist() {
 
   // move all to cart
   const moveAllToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const updatedCart = [...cart, ...wishlist];
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-    localStorage.removeItem("wishlist");
+  wishlist.forEach((wishItem) => {
+    const exist = cart.find((cartItem) => cartItem.id === wishItem.id);
 
-    setWishlist([]);
-    window.dispatchEvent(new Event("wishlistUpdated"));
-    alert("All items moved to cart");
-  };
+    if (exist) {
+      cart = cart.map((cartItem) =>
+        cartItem.id === wishItem.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      );
+    } else {
+      cart.push({ ...wishItem, quantity: 1 });
+    }
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.removeItem("wishlist");
+
+  setWishlist([]);
+  window.dispatchEvent(new Event("wishlistUpdated"));
+  window.dispatchEvent(new Event("cartUpdated"));
+
+  alert("All items moved to cart");
+};
 
   //just for you loads allproducts
   useEffect(() => {
@@ -85,7 +102,9 @@ function Wishlist() {
                 className="w-full h-40 object-contain"
               />
 
-              <button className="w-full flex items-center justify-center gap-2 bg-black text-white py-2 text-sm mt-3">
+              <button 
+              onClick={() => addToCart(item)}
+              className="w-full flex items-center justify-center gap-2 bg-black text-white py-2 text-sm mt-3">
                 <AiOutlineShoppingCart />
                 Add To Cart
               </button>
@@ -133,7 +152,9 @@ function Wishlist() {
                     alt=""
                   />
 
-                  <button className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
+                  <button  
+                  onClick={() => addToCart(item)}
+                  className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
                     Add To Cart
                   </button>
                 </div>

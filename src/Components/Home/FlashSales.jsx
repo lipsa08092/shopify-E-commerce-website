@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 import { IoEye } from "react-icons/io5";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import useWishlist from "../Hooks/useWishlist";
 import Rating from "../../Data/Rating";
+import useCart from "../Hooks/useCart";
 
 function FlashSales() {
   const [products, setProducts] = useState([]);
   const [index, setIndex] = useState(0);
-  const { wishlist, toggleWishlist} = useWishlist();
+  const { wishlist, toggleWishlist } = useWishlist();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -107,7 +109,10 @@ function FlashSales() {
                     alt=""
                   />
 
-                  <button className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
+                  <button
+                    onClick={() => addToCart(item)}
+                    className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300"
+                  >
                     Add To Cart
                   </button>
                 </div>

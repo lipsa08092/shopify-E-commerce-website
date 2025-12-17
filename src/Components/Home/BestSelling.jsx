@@ -3,18 +3,21 @@ import { IoMdHeartEmpty ,IoMdHeart } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
 import Rating from "../../Data/Rating";
 import useWishlist from "../Hooks/useWishlist";
+import useCart from "../Hooks/useCart";
 
 function BestSelling() {
   const [products, setProducts] = useState([]);
   const [viewAll, setViewAll] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const { wishlist, toggleWishlist } = useWishlist();
+  const { addToCart} = useCart();
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
     setProducts(storedProducts.slice(5, 9));
     setAllProducts(storedProducts);
   }, []);
+  
   const handleViewAll = () => {
     if (viewAll) {
       setProducts(allProducts.slice(5, 9));
@@ -44,7 +47,7 @@ function BestSelling() {
 
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((item) => (
-          <div key={item.id} className="w-[full]">
+          <div key={item.id} className="w-full">
             <div className="p-3 rounded-lg relative  hover:shadow-md transition">
               <div className="relative bg-gray-100 pt-5 pb-3 flex items-center justify-center">
                 <img
@@ -53,7 +56,9 @@ function BestSelling() {
                   alt=""
                 />
 
-                <button className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
+                <button 
+                onClick={() => addToCart(item)}
+                className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
                   Add To Cart
                 </button>
               </div>
