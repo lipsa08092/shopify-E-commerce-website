@@ -29,7 +29,7 @@ function Wishlist() {
   // move all to cart
   const moveAllToCart = () => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
+  
   wishlist.forEach((wishItem) => {
     const exist = cart.find((cartItem) => cartItem.id === wishItem.id);
 

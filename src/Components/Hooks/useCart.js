@@ -31,7 +31,7 @@ const useCart = () => {
     const updateCart = cart.filter((a) => a.id !== id);
     setCart(updateCart);
     localStorage.setItem("cart", JSON.stringify(updateCart));
-       window.dispatchEvent(new Event("cartUpdated"));
+    window.dispatchEvent(new Event("cartUpdated"));
   };
 
   //updated quantity
@@ -51,12 +51,20 @@ const useCart = () => {
     localStorage.removeItem("cart");
     window.dispatchEvent(new Event("cartUpdated"));
   };
-  
+
   //cart total
   const cartTotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,0
+    (total, item) => total + item.price * item.quantity,
+    0
   );
 
-  return { cart, addToCart, removeFromCart, updateQuantity,clearCart, cartTotal };
+  return {
+    cart,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    clearCart,
+    cartTotal,
+  };
 };
 export default useCart;

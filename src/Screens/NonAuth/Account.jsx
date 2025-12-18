@@ -75,7 +75,6 @@ function Account() {
         <p className="text-sm mb-10">
           Welcome!
           <span className="text-red-600 text-sm font-medium">
-            {" "}
             {data.firstName} {data.lastName}
           </span>
         </p>

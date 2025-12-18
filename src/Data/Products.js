@@ -15,7 +15,7 @@ import shoes from "../assects/shoes.png";
 import remote from "../assects/remote.png";
 import jacket from "../assects/jacket.png";
 
- export const products = [
+export const products = [
   {
     id: 1,
     img: Videogame,
@@ -25,6 +25,7 @@ import jacket from "../assects/jacket.png";
     discount: 40,
     star: 5,
     rating: 88,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 2,
@@ -35,6 +36,7 @@ import jacket from "../assects/jacket.png";
     discount: 35,
     star: 4,
     rating: 75,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 3,
@@ -45,6 +47,7 @@ import jacket from "../assects/jacket.png";
     discount: 30,
     star: 5,
     rating: 99,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 4,
@@ -55,6 +58,7 @@ import jacket from "../assects/jacket.png";
     discount: 25,
     star: 4.5,
     rating: 99,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 5,
@@ -65,6 +69,7 @@ import jacket from "../assects/jacket.png";
     discount: 26,
     star: 4.5,
     rating: 65,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 6,
@@ -74,6 +79,7 @@ import jacket from "../assects/jacket.png";
     oldPrice: 360,
     star: 5,
     rating: 65,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 7,
@@ -83,8 +89,9 @@ import jacket from "../assects/jacket.png";
     oldPrice: 1160,
     star: 4.5,
     rating: 65,
+    colors: ["#ef4444", "#2563eb"],
   },
-  
+
   {
     id: 8,
     img: cabinet,
@@ -93,6 +100,7 @@ import jacket from "../assects/jacket.png";
     oldPrice: 470,
     star: 4.5,
     rating: 65,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 9,
@@ -101,6 +109,7 @@ import jacket from "../assects/jacket.png";
     price: 100,
     star: 3,
     rating: 35,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 10,
@@ -109,6 +118,7 @@ import jacket from "../assects/jacket.png";
     price: 360,
     star: 4,
     rating: 95,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 11,
@@ -117,6 +127,7 @@ import jacket from "../assects/jacket.png";
     price: 700,
     star: 5,
     rating: 325,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 12,
@@ -125,6 +136,7 @@ import jacket from "../assects/jacket.png";
     price: 500,
     star: 4,
     rating: 145,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 13,
@@ -134,6 +146,7 @@ import jacket from "../assects/jacket.png";
     arrival: "NEW",
     star: 5,
     rating: 65,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 14,
@@ -142,6 +155,7 @@ import jacket from "../assects/jacket.png";
     price: 1160,
     star: 5,
     rating: 35,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 15,
@@ -151,6 +165,7 @@ import jacket from "../assects/jacket.png";
     arrival: "NEW",
     star: 4.5,
     rating: 55,
+    colors: ["#ef4444", "#2563eb"],
   },
   {
     id: 16,
@@ -159,5 +174,6 @@ import jacket from "../assects/jacket.png";
     price: 660,
     star: 4.5,
     rating: 55,
+    colors: ["#ef4444", "#2563eb"],
   },
 ];

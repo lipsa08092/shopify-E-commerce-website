@@ -33,17 +33,14 @@ function Cart() {
                 <img src={item.img} alt="" className="w-14" />
                 <button
                   onClick={() => removeFromCart(item.id)}
-                  className="absolute -top-2 -left-2 bg-red-600 text-white 
-                 w-4 h-4 rounded-full text-sm flex items-center 
-                 justify-center"
+                  className="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full text-sm flex items-center justify-center"
                 >
                   <RxCross2 />
                 </button>
               </div>
-
               <p className="text-sm">{item.title}</p>
             </div>
-
+            
             {/*price*/}
             <p className="text-center">${item.price}</p>
 
@@ -74,13 +71,11 @@ function Cart() {
           >
             Return To Shop
           </Link>
-
           <button className="border border-gray-400 px-6 py-2 text-sm">
             Update Cart
           </button>
         </div>
       </div>
-
       <div className="flex justify-between gap-10 mt-10">
         <div className="flex gap-4">
           <input

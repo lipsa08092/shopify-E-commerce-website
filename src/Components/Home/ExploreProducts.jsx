@@ -4,13 +4,15 @@ import { IoEye } from "react-icons/io5";
 import Rating from "../../Data/Rating";
 import useWishlist from "../Hooks/useWishlist";
 import useCart from "../Hooks/useCart";
+import { useNavigate } from "react-router-dom";
 
 function ExploreProducts() {
   const [products, setProducts] = useState([]);
-  const [allproducts, setAllProducts] = useState([]);
+  const [allproducts, setAllProducts] = useState(true);
   const [viewAll, setViewAll] = useState([]);
   const { wishlist, toggleWishlist } = useWishlist();
-  const { addToCart} = useCart();
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -20,11 +22,14 @@ function ExploreProducts() {
 
   const handleViewAll = () => {
     if (viewAll) {
-      setProducts(allproducts.slice(8, 16));
-    } else {
       setProducts(allproducts);
+    } else {
+      setProducts(allproducts.slice(0,8));
     }
     setViewAll(!viewAll);
+  };
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -41,7 +46,7 @@ function ExploreProducts() {
           onClick={handleViewAll}
           className="text-sm text-gray-100 px-5 py-2 bg-red-500 hover:bg-red-600 rounded-md"
         >
-          {viewAll ? "Close" : "View All"}
+          {viewAll ? "View All" : "Close"}
         </button>
       </div>
 
@@ -58,11 +63,16 @@ function ExploreProducts() {
                 src={item.img}
                 className="w-full h-40 sm:h-44 object-contain"
                 alt=""
+                onClick={() => {
+                  navigate(`/product/${item.id}`);
+                  handleClick();
+                }}
               />
 
-              <button 
-              onClick={() => addToCart(item)}
-              className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
+              <button
+                onClick={() => addToCart(item)}
+                className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300"
+              >
                 Add To Cart
               </button>
             </div>
@@ -99,7 +109,7 @@ function ExploreProducts() {
           onClick={handleViewAll}
           className="bg-red-600 text-white px-8 py-3 rounded-md"
         >
-          {viewAll ? "Go Back" : "View All Products"}
+          {viewAll ? "View All Products" : "Go Back"}
         </button>
       </div>
     </div>

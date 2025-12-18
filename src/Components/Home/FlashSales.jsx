@@ -1,16 +1,18 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 import { IoEye } from "react-icons/io5";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import useWishlist from "../Hooks/useWishlist";
 import Rating from "../../Data/Rating";
 import useCart from "../Hooks/useCart";
+import { useNavigate } from "react-router-dom";
 
 function FlashSales() {
   const [products, setProducts] = useState([]);
   const [index, setIndex] = useState(0);
   const { wishlist, toggleWishlist } = useWishlist();
   const { addToCart } = useCart();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -27,6 +29,9 @@ function FlashSales() {
     if (index > 0) {
       setIndex(index - 1);
     }
+  };
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -107,6 +112,10 @@ function FlashSales() {
                     src={item.img}
                     className="w-full h-44 object-contain"
                     alt=""
+                    onClick={() => {
+                      handleClick();
+                      navigate(`/product/${item.id}`);
+                    }}
                   />
 
                   <button
