@@ -14,15 +14,21 @@ import Wishlist from "./Screens/User/Wishlist";
 import Cart from "./Screens/User/Cart";
 import Checkout from "./Screens/NonAuth/Checkout";
 import ProductDetails from "./Screens/NonAuth/ProductDetails";
-import Admin from "./Screens/Admin/Admin";
-
+import AdminLogin from "./Screens/Auth/AdminLogin";
+import AdminDashboard from "./Screens/Admin/AdminDashboard";
+import ProtectedAdmin from "./Routes/ProtectedAdmin";
 import { products } from "./Data/Products";
+import { setDefaultAdmin } from "./Data/SetAdmin";
+import AdminProfile from "./Screens/NonAuth/AdminProfile";
 
 function App() {
   useEffect(() => {
     if (!localStorage.getItem("products")) {
       localStorage.setItem("products", JSON.stringify(products));
     }
+  }, []);
+  useEffect(() => {
+    setDefaultAdmin();
   }, []);
 
   return (
@@ -114,12 +120,25 @@ function App() {
             </MainLayout>
           }
         />
+        <Route path="/admin-login" element={<AdminLogin />} />
         <Route
-          path="/admin-login"
+          path="/admin"
           element={
-            <AdminLayout>
-              <Admin />
-            </AdminLayout>
+            <ProtectedAdmin>
+              <AdminLayout>
+                <AdminDashboard />
+              </AdminLayout>
+            </ProtectedAdmin>
+          }
+        />
+        <Route
+          path="/admin/profile"
+          element={
+            <ProtectedAdmin>
+              <AdminLayout>
+                <AdminProfile />
+              </AdminLayout>
+            </ProtectedAdmin>
           }
         />
         <Route path="/404error" element={<Error />} />

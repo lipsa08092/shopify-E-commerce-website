@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Admin() {
+function Products() {
   return (
     <div>
-      hiii Admin
+      Products
     </div>
   )
 }
 
-export default Admin
+export default Products
