@@ -125,22 +125,14 @@ function App() {
           path="/admin"
           element={
             <ProtectedAdmin>
-              <AdminLayout>
-                <AdminDashboard />
-              </AdminLayout>
+              <AdminLayout />
             </ProtectedAdmin>
           }
-        />
-        <Route
-          path="/admin/profile"
-          element={
-            <ProtectedAdmin>
-              <AdminLayout>
-                <AdminProfile />
-              </AdminLayout>
-            </ProtectedAdmin>
-          }
-        />
+        >
+          <Route index element={<AdminDashboard />} />
+          <Route path="profile" element={<AdminProfile />} />
+        </Route>
+
         <Route path="/404error" element={<Error />} />
       </Routes>
     </BrowserRouter>

@@ -12,7 +12,7 @@ function AdminLogin() {
   const handleLogin = () => {
     const storedAdmin = JSON.parse(localStorage.getItem("users")) || [];
     const admin = storedAdmin.find(
-      (u) => u.email === email && u.password === password && u.role === "admin"
+      (a) => a.email === email && a.password === password && a.role === "admin"
     );
     if (!admin) {
       alert("Admin account not found!");

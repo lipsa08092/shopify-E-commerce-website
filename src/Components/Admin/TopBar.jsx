@@ -1,4 +1,11 @@
-import { Bell, Mail, Settings, HelpCircle, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  Bell,
+  Mail,
+  Settings,
+  HelpCircle,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import logo from "../../assects/Shopify-logo.png";
 import { RiUser3Fill } from "react-icons/ri";
 import { useState } from "react";
@@ -60,29 +67,34 @@ const Topbar = () => {
             <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">
               <RiUser3Fill />
             </div>
-            <ChevronDown size={16} className="text-white" />
-            <ChevronUp/>
+
+            {open ? (
+              <ChevronUp size={16} className="text-white" />
+            ) : (
+              <ChevronDown size={16} className="text-white" />
+            )}
           </div>
 
-          {/* dropdown */}
+          {/* Dropdown */}
           {open && (
-            <div className="absolute right-0 mt-2 w-40 bg-[#3c2f70] rounded-xl shadow-lg overflow-hidden z-50">
+            <div className="absolute z-20 right-0 mt-2 w-44 bg-[#4f32c2] rounded-xl ">
               <button
                 onClick={() => {
                   setOpen(false);
                   navigate("/admin/profile");
                 }}
-                className="w-full px-4 py-2 text-left text-white hover:bg-[#524781]"
+                className="flex items-center w-full gap-2 px-4 py-2 text-white hover:bg-[#6a58bb] rounded-xl"
               >
-                <CgProfile/>
-                Profile
+                <CgProfile size={16} />
+                <span>Profile</span>
               </button>
 
               <button
                 onClick={handleLogout}
-                className="w-full px-4 py-2 text-left text-white hover:bg-[#524781]"
-              ><FaSignOutAlt/>
-                Sign out
+                className="flex items-center w-full gap-2 px-4 py-2 text-white hover:bg-[#6a58bb] rounded-xl"
+              >
+                <FaSignOutAlt size={16} />
+                <span>Sign out</span>
               </button>
             </div>
           )}

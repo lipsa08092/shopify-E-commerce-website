@@ -1,7 +1,8 @@
 import Sidebar from "../Components/Admin/SideBar";
 import Topbar from "../Components/Admin/TopBar";
+import { Outlet } from "react-router-dom";
 
-const AdminLayout = ({ children }) => {
+const AdminLayout = () => {
   return (
     <div className="h-screen w-full flex flex-col bg-gray-900 text-white">
       <Topbar />
@@ -9,7 +10,7 @@ const AdminLayout = ({ children }) => {
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
         {/* main content */}
-        <div className="flex-1 overflow-y-auto p-6">{children}</div>
+        <div className="flex-1 overflow-y-auto p-6"><Outlet /></div>
       </div>
     </div>
   );

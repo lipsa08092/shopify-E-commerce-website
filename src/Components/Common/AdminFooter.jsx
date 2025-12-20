@@ -1,11 +1,11 @@
 import React from 'react'
 
-function StartCard() {
+function AdminFooter() {
   return (
     <div>
-      Start Card
+      
     </div>
   )
 }
 
-export default StartCard
+export default AdminFooter
