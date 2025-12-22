@@ -18,8 +18,8 @@ function AdminLogin() {
       alert("Admin account not found!");
       return;
     }
-    localStorage.setItem("adminAuth", "true");
     localStorage.setItem("loggedAdmin", JSON.stringify(admin));
+    localStorage.setItem("isAdmin", "yes");
     navigate("/admin");
   };
 

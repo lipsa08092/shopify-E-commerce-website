@@ -8,11 +8,11 @@ const AdminProfile = () => {
   }
 
   return (
-    <div className="p-8 flex justify-center">
-      <div className="w-full bg-gray-700 rounded-2xl text-white flex overflow-hidden">
+    <div className="p-20 flex justify-center">
+      <div className="w-full bg-gray-800 rounded-2xl text-white flex overflow-hidden">
 
         {/* Profile */}
-        <div className="w-1/3 bg-black/20 flex flex-col items-center justify-center p-8">
+        <div className="w-1/3 bg-gray-700/80 flex flex-col items-center justify-center p-8">
           <img
             src={admin.avatar}
             alt="Admin"
@@ -23,7 +23,7 @@ const AdminProfile = () => {
         </div>
 
         {/* information */}
-        <div className="w-2/3 p-8">
+        <div className="w-2/3 p-8 bg-gray-700/40">
           <h3 className="text-2xl mb-6 border-b border-white/30 pb-2">
             Personal Information
           </h3>

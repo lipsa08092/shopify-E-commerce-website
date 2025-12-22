@@ -14,7 +14,7 @@ import car from "../assects/car.png";
 import shoes from "../assects/shoes.png";
 import remote from "../assects/remote.png";
 import jacket from "../assects/jacket.png";
-import Category from "../Components/Home/Category";
+
 
 export const products = [
   {
@@ -28,6 +28,9 @@ export const products = [
     star: 5,
     rating: 88,
     colors: ["#ef4444", "#2563eb"],
+    status: "Trending",
+    quantity:5,
+    
   },
   {
     id: 2,
@@ -40,6 +43,8 @@ export const products = [
     star: 4,
     rating: 75,
     colors: ["#ef4444", "#2563eb"],
+    status: "Popular",
+    quantity:15,
   },
   {
     id: 3,
@@ -52,6 +57,8 @@ export const products = [
     star: 5,
     rating: 99,
     colors: ["#ef4444", "#2563eb"],
+    status: "Popular",
+    quantity:20,
   },
   {
     id: 4,
@@ -64,6 +71,8 @@ export const products = [
     star: 4.5,
     rating: 99,
     colors: ["#ef4444", "#2563eb"],
+    status: "Trending",
+    quantity:12,
   },
   {
     id: 5,
@@ -76,6 +85,8 @@ export const products = [
     star: 4.5,
     rating: 65,
     colors: ["#ef4444", "#2563eb"],
+    status: "Popular",
+    quantity:8,
   },
   {
     id: 6,
@@ -87,6 +98,8 @@ export const products = [
     star: 5,
     rating: 65,
     colors: ["#ef4444", "#2563eb"],
+    status: "Trending",
+    quantity:17,
   },
   {
     id: 7,
@@ -98,6 +111,8 @@ export const products = [
     star: 4.5,
     rating: 65,
     colors: ["#ef4444", "#2563eb"],
+    status: "Trending",
+    quantity:10,
   },
 
   {
@@ -110,6 +125,8 @@ export const products = [
     star: 4.5,
     rating: 65,
     colors: ["#ef4444", "#2563eb"],
+    status: "Popular",
+    quantity:23,
   },
   {
     id: 9,
@@ -120,6 +137,8 @@ export const products = [
     star: 3,
     rating: 35,
     colors: ["#ef4444", "#2563eb"],
+    status: "Popular",
+    quantity:5,
   },
   {
     id: 10,
@@ -130,6 +149,8 @@ export const products = [
     star: 4,
     rating: 95,
     colors: ["#ef4444", "#2563eb"],
+    status: "Trending",
+    quantity:27,
   },
   {
     id: 11,
@@ -140,6 +161,8 @@ export const products = [
     star: 5,
     rating: 325,
     colors: ["#ef4444", "#2563eb"],
+    status: "Popular",
+    quantity:15,
   },
   {
     id: 12,
@@ -150,6 +173,8 @@ export const products = [
     star: 4,
     rating: 145,
     colors: ["#ef4444", "#2563eb"],
+    status: "Trending",
+    quantity:30,
   },
   {
     id: 13,
@@ -161,6 +186,8 @@ export const products = [
     star: 5,
     rating: 65,
     colors: ["#ef4444", "#2563eb"],
+    status: "Popular",
+    quantity:7,
   },
   {
     id: 14,
@@ -171,6 +198,8 @@ export const products = [
     star: 5,
     rating: 35,
     colors: ["#ef4444", "#2563eb"],
+    status: "Trending",
+    quantity:9,
   },
   {
     id: 15,
@@ -182,6 +211,8 @@ export const products = [
     star: 4.5,
     rating: 55,
     colors: ["#ef4444", "#2563eb"],
+    status: "Trending",
+    quantity:11,
   },
   {
     id: 16,
@@ -192,5 +223,7 @@ export const products = [
     star: 4.5,
     rating: 55,
     colors: ["#ef4444", "#2563eb"],
+    status: "Popular",
+    quantity:23,
   },
 ];

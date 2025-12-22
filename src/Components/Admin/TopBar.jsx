@@ -6,7 +6,6 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import logo from "../../assects/Shopify-logo.png";
 import { RiUser3Fill } from "react-icons/ri";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +17,7 @@ const Topbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("adminAuth");
+    localStorage.removeItem("isAdmin");
     localStorage.removeItem("loggedAdmin");
     navigate("/admin-login");
   };
@@ -29,8 +28,14 @@ const Topbar = () => {
       bg-gradient-to-r from-[#8f7ccf] to-[#9b8fcf] shadow"
     >
       {/* Logo */}
-      <div className="flex items-center gap-3">
-        <img src={logo} alt="Prime" className="h-10 w-auto" />
+      <div className="flex items-center">
+        <img
+          src=
+            'https://www.pngall.com/wp-content/uploads/13/Shopify-Logo-PNG-File.png'
+          
+          alt="shopify"
+          className="h-16 w-full"
+        />
       </div>
 
       <div className="flex items-center gap-4">
