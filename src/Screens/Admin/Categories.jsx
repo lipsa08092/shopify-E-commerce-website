@@ -9,7 +9,7 @@ function Categories() {
   }, []);
 
   return (
-    <div className=" p-6 bg-blue-950 min-h-screen text-white">
+    <div className=" p-6 bg-blue-950 min-h-full text-white">
       <div className="mb-8">
         <h1 className="text-3xl font-serif font-bold">Categories Management</h1>
       </div>

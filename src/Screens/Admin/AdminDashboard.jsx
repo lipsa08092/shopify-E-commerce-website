@@ -34,7 +34,7 @@ const Dashboard = () => {
   const time = currentTime.toLocaleTimeString("en-US");
 
   return (
-    <div className="p-6 bg-gray-800 min-h-screen text-white ">
+    <div className="p-6 bg-blue-950 min-h-screen text-white ">
       <div className="flex gap-6">
         <div>
           <h1 className="text-3xl font-bold text-white font-serif mb-5">

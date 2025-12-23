@@ -57,7 +57,7 @@ function Testimonials() {
   ];
 
   return (
-      <div className="p-6 bg-blue-950 min-h-screen text-white">
+      <div className="p-6 bg-blue-950 min-h-full text-white">
         <h1 className="text-3xl font-serif font-bold mb-8">
           Testimonials Management
         </h1>
