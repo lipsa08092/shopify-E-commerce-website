@@ -34,17 +34,19 @@ const Dashboard = () => {
   const time = currentTime.toLocaleTimeString("en-US");
 
   return (
-    <div className="p-6 bg-blue-950 min-h-screen text-white ">
-      <div className="flex gap-6">
+    <div className="p-4 md:p-6 bg-blue-950 text-white">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div>
-          <h1 className="text-3xl font-bold text-white font-serif mb-5">
+          <h1 className="text-2xl md:text-3xl font-bold font-serif mb-2">
             Welcome to <span className="text-green-500">Shopify</span>
           </h1>
-          <p className="text-gray-300 pb-4 text-md">Here's what's happening today</p>
+          <p className="text-gray-300 text-sm md:text-md">
+            Here's what's happening today
+          </p>
         </div>
 
         {/* Date / Time Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full lg:w-auto">
           <div className="flex items-center gap-4 px-6 py-2 rounded-xl  backdrop-blur-xl bg-black/30 border border-white/20 text-white">
             <div className="p-3 rounded-lg bg-white/20">
               <SlCalender className="text-yellow-500" />
@@ -60,10 +62,12 @@ const Dashboard = () => {
             </div>
             <div>
               <p className="text-sm text-gray-200">Date</p>
-              <h2 className="text-xl font-bold">{fullDate}</h2>
+              <h2 className="text-lg md:text-xl font-bold break-words">
+                {fullDate}
+              </h2>
             </div>
           </div>
-          <div className="flex items-center gap-4 px-6 rounded-xl  backdrop-blur-xl bg-black/30 border border-white/20 text-white shadow-lg">
+          <div className="flex items-center gap-4 px-6 py-2 rounded-xl  backdrop-blur-xl bg-black/30 border border-white/20 text-white shadow-lg">
             <div className="p-3 rounded-lg bg-white/20">
               <FaRegClock className="text-yellow-500" />
             </div>
@@ -76,7 +80,8 @@ const Dashboard = () => {
       </div>
 
       {/* products categories */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+
         <div className="flex items-center gap-4 p-5 rounded-xl backdrop-blur-xl bg-black/30 border border-white/20 text-white">
           <div className="p-3 rounded-lg bg-green-500/50">
             <FiTag size={24} className="text-green-500" />
@@ -115,14 +120,16 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Quick Actions & Best Selling Products */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-10">
+<div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-10">
+
         <div className="bg-black/30 backdrop-blur-xl border border-white/20 rounded-2xl p-6 text-white">
           <div className="flex gap-2 mb-6">
             <FaRegCalendarCheck className="mt-2 text-xl" />
             <h2 className="text-2xl font-semibold">Quick Actions</h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+         <div className="grid grid-cols-2 gap-4 text-sm">
+
             <div
               onClick={() => {
                 navigate("/admin/categories");
