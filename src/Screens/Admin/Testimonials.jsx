@@ -57,7 +57,7 @@ function Testimonials() {
   ];
 
   return (
-      <div className="p-6 bg-gray-800 h-full text-white">
+      <div className="p-6 bg-blue-950 min-h-screen text-white">
         <h1 className="text-3xl font-serif font-bold mb-8">
           Testimonials Management
         </h1>
@@ -66,7 +66,7 @@ function Testimonials() {
           {testimonials.map((item) => (
             <div
               key={item.id}
-              className="relative p-6 bg-gray-700/60 backdrop-blur-md border border-white/20 rounded-2xl hover:scale-105 transition"
+              className="relative p-6 bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl hover:scale-105 transition"
             >
               <div className="flex items-center gap-4 mb-3">
                 <img

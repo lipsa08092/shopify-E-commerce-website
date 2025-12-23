@@ -35,7 +35,7 @@ function FlashSales() {
   };
 
   return (
-    <div className="py-20 mx-4 sm:mx-10 lg:mx-20 border-b">
+    <div className="py-14 mx-4 sm:mx-10 lg:mx-20 border-b">
       <div className="flex gap-3 items-center">
         <div className="w-4 h-10 rounded-md bg-red-600"></div>
         <p className="text-red-600 font-bold">Today's</p>

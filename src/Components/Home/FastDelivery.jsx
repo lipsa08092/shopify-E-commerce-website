@@ -5,7 +5,7 @@ import { BsShieldCheck } from "react-icons/bs";
 
 export default function FastDelivery() {
   return (
-    <div className="py-20 mx-5 sm:mx-10 lg:mx-20">
+    <div className="p-20 mx-5 sm:mx-10 lg:mx-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
         {/* Free Delivery */}
         <div className="flex flex-col items-center gap-3">

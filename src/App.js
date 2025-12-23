@@ -24,6 +24,9 @@ import Categories from "./Screens/Admin/Categories";
 import Products from "./Screens/Admin/Products";
 import Testimonials from "./Screens/Admin/Testimonials";
 import ContactInfo from "./Screens/Admin/ContactInfo";
+import JobOpenings from "./Screens/Admin/JobOpenings";
+import Applications from "./Screens/Admin/Applications";
+import ApplyJob from "./Screens/Admin/ApplyJob";
 
 function App() {
   useEffect(() => {
@@ -59,7 +62,11 @@ function App() {
           <Route path="products" element={<Products />} />
           <Route path="testimonials" element={<Testimonials />} />
           <Route path="contactinfo" element={<ContactInfo />} />
+          <Route path="jobOpenings" element={<JobOpenings />} />
+          <Route path="applications" element={<Applications />} />
         </Route>
+        <Route path="/career/apply/:id" element={<ApplyJob />} />
+
         <Route path="/404error" element={<Error />} />
       </Routes>
     </BrowserRouter>

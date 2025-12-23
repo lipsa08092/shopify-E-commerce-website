@@ -33,7 +33,7 @@ function ExploreProducts() {
   };
 
   return (
-    <div className="py-20 px-5 sm:px-10 lg:px-20">
+    <div className="py-5 px-5 sm:px-10 lg:px-20">
       <div className="flex gap-3 items-center">
         <div className="w-4 h-10 rounded-md bg-red-600"></div>
         <p className="text-red-600 font-bold">Our Products</p>

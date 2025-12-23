@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function AdminFooter() {
+function Footer() {
   return (
-    <div>
-      
-    </div>
-  )
+    <footer className="bg-gray-800 text-white py-4 text-center mt-auto">
+      <p>&copy; 2025 My Company. All rights reserved.</p>
+    </footer>
+  );
 }
 
-export default AdminFooter
+export default Footer;

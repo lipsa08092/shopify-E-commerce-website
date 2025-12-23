@@ -3,7 +3,7 @@ import JBL from "../../assects/jbl-speaker.png";
 
 function Banner() {
   return (
-    <div className="mx-4 sm:mx-10 lg:mx-20 py-10 lg:py-20">
+    <div className="mx-4 sm:mx-10 lg:mx-20 py-5 lg:py-20">
       <div className="relative w-full bg-black p-6 sm:p-10 lg:p-16  lg:h-96 flex flex-col lg:flex-row justify-between items-center ">
         
         <div className="text-white space-y-4 lg:space-y-5 sm:space-y-10 text-center lg:text-left">

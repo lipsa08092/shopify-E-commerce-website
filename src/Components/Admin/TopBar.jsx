@@ -1,11 +1,9 @@
-import {
-  Bell,
-  Mail,
-  Settings,
-  HelpCircle,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { FaRegBell } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
+import { IoSettings } from "react-icons/io5";
+import { IoMdHelpCircle } from "react-icons/io";
+import { IoChevronDown } from "react-icons/io5";
+import { IoChevronUp } from "react-icons/io5";
 import { RiUser3Fill } from "react-icons/ri";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -41,25 +39,25 @@ const Topbar = () => {
       <div className="flex items-center gap-4">
         <div className="items-center bg-[#7c6ab8] px-2 py-2 rounded-full cursor-pointer">
           <div className="w-5 h-5 rounded-full items-center justify-center text-white font-semibold">
-            <Bell size={18} />
+            <FaRegBell  size={18} />
           </div>
         </div>
 
         <div className="items-center bg-[#7c6ab8] px-2 py-2 rounded-full cursor-pointer">
           <div className="w-5 h-5 rounded-full items-center justify-center text-white font-semibold">
-            <Mail size={18} />
+            <IoIosMail size={18} />
           </div>
         </div>
 
         <div className="items-center bg-[#7c6ab8] px-2 py-2 rounded-full cursor-pointer">
           <div className="w-5 h-5 rounded-full items-center justify-center text-white font-semibold">
-            <Settings size={18} />
+            <IoSettings size={18} />
           </div>
         </div>
 
         <div className="items-center bg-[#7c6ab8] px-2 py-2 rounded-full cursor-pointer">
           <div className="w-5 h-5 rounded-full items-center justify-center text-white font-semibold">
-            <HelpCircle size={18} />
+            <IoMdHelpCircle size={18} />
           </div>
         </div>
 
@@ -74,9 +72,9 @@ const Topbar = () => {
             </div>
 
             {open ? (
-              <ChevronUp size={16} className="text-white" />
+              <IoChevronUp size={16} className="text-white" />
             ) : (
-              <ChevronDown size={16} className="text-white" />
+              <IoChevronDown size={16} className="text-white" />
             )}
           </div>
 

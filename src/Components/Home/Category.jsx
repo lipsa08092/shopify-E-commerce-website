@@ -26,7 +26,7 @@ function Category() {
   ];
 
   return (
-    <div className="py-20 mx-4 sm:mx-10 lg:mx-20 border-b">
+    <div className="py-10 mx-4 sm:mx-10 lg:mx-20 border-b">
       <div>
         <div className="flex gap-3 items-center">
           <div className="w-4 h-10 rounded-md bg-red-600"></div>

@@ -21,8 +21,8 @@ const Sidebar = () => {
 
   return (
     <div
-      className="w-64 relative h-screen flex flex-col justify-between
-      bg-gradient-to-b from-[#3f3f46] to-[#2b2b2f] text-white"
+      className="w-52 relative h-screen flex flex-col justify-between
+      bg-gradient-to-b from-[#35353f] to-[#2b2b2f] text-white"
     >
       <ul className="px-3 mt-6 space-y-2">
         {/* Dashboard */}
@@ -32,7 +32,7 @@ const Sidebar = () => {
           className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium
           ${
             activeItem === "dashboard"
-              ? "bg-[#9b94c9]"
+              ? "bg-[#5e597c]"
               : "text-gray-300 hover:bg-white/10"
           }`}
         >
@@ -97,6 +97,28 @@ const Sidebar = () => {
               className={`${openMenu === "career" && "rotate-180"} transition`}
             />
           </button>
+          {openMenu === "career" && (
+            <div className="ml-10 space-y-2 text-md border-l p-3 text-gray-300">
+              <div className="flex items-center gap-2">
+                <TbCategory />
+                <Link
+                  to="/admin/jobOpenings"
+                  className="hover:text-white cursor-pointer"
+                >
+                  JobOpenings
+                </Link>
+              </div>
+              <div className="flex items-center gap-2">
+                <MdProductionQuantityLimits />
+                <Link
+                  to="/admin/applications"
+                  className="hover:text-white cursor-pointer"
+                >
+                  Applications
+                </Link>
+              </div>
+            </div>
+          )}
         </li>
 
         {/* Marketing */}
