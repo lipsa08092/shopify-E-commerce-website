@@ -20,7 +20,7 @@ function ContactInfo() {
   };
 
   return (
-    <div className="p-4 sm:p-6 min-h-full bg-gray-800 text-white">
+    <div className="p-4 sm:p-6 min-h-full bg-blue-950 text-white">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl sm:text-3xl font-serif font-bold">
           Contact Info Management
@@ -37,7 +37,7 @@ function ContactInfo() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {/* Email */}
-        <div className="bg-gray-700/20 border border-white/20 rounded-xl p-5">
+        <div className="bg-black/40 border border-white/20 rounded-xl p-5">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 flex items-center justify-center bg-blue-500/20 rounded-full">
               <MdEmail size={20} className="text-blue-400" />
@@ -50,7 +50,7 @@ function ContactInfo() {
         </div>
 
         {/* Phone */}
-        <div className="bg-gray-700/20 border border-white/20 rounded-xl p-5">
+        <div className="bg-black/40 border border-white/20 rounded-xl p-5">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 flex items-center justify-center bg-green-400/20 rounded-full">
               <FaPhoneAlt size={20} className="text-green-400" />
@@ -63,7 +63,7 @@ function ContactInfo() {
         </div>
 
         {/* WhatsApp */}
-        <div className="bg-gray-700/20 border border-white/20 rounded-xl p-5">
+        <div className="bg-black/40 border border-white/20 rounded-xl p-5">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 flex items-center justify-center bg-green-400/20 rounded-full">
               <FaWhatsapp size={24} className="text-green-400" />

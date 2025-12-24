@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FiPlus } from "react-icons/fi";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -10,10 +11,14 @@ function Products() {
 
   return (
     <div className="p-4 md:p-6 min-h-screen bg-blue-950 text-white">
-      <h1 className="text-2xl md:text-3xl font-bold mb-6">
-        Product Managements
-      </h1>
-      
+      <div className="mb-8 flex justify-between items-center">
+        <h1 className="text-3xl font-serif font-bold">Products Management</h1>
+        <div className="flex gap-2 bg-orange-600 text-white font-semibold py-2 px-3 rounded-xl">
+          <FiPlus className="mt-1" />
+          <button>Add New</button>
+        </div>
+      </div>
+
       {/*desktop card*/}
       <div className="hidden md:block">
         <div className="grid grid-cols-6 gap-4 px-4 py-3 text-center text-sm font-semibold bg-white/20 rounded-t-lg">

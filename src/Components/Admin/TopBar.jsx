@@ -22,8 +22,7 @@ const Topbar = () => {
 
   return (
     <div
-      className="relative h-16 w-full flex items-center justify-between px-6
-      bg-gradient-to-r from-[#8f7ccf] to-[#9b8fcf] shadow"
+      className="relative h-16 w-full flex items-center justify-between px-6 bg-gradient-to-r from-[#8f7ccf] to-[#9b8fcf]"
     >
       {/* Logo */}
       <div className="flex items-center">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FiPlus } from "react-icons/fi";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -10,8 +11,11 @@ function Categories() {
 
   return (
     <div className=" p-6 bg-blue-950 min-h-full text-white">
-      <div className="mb-8">
+      <div className="mb-8 flex justify-between items-center">
         <h1 className="text-3xl font-serif font-bold">Categories Management</h1>
+        <div className="flex gap-2 bg-orange-600 text-white font-semibold py-2 px-3 rounded-xl">
+          <FiPlus className="mt-1"/><button>Add New</button>
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {categories.map((item, index) => (

@@ -6,8 +6,8 @@ const Applications = () => {
   const [applications, setApplications] = useState([]);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("applications")) || [];
-    setApplications(saved);
+    const savedApp = JSON.parse(localStorage.getItem("applications")) || [];
+    setApplications(savedApp);
   }, []);
 
   const updateStatus = (id, status) => {
@@ -23,11 +23,10 @@ const Applications = () => {
   }
 
   return (
-    <div className="p-6 space-y-6 bg-blue-950">
+    <div className="p-6 min-h-full space-y-6 bg-blue-950">
       <h1 className="text-2xl font-bold text-white">
         Job Applications ({applications.length})
       </h1>
-
       {applications.map((app) => (
         <div
           key={app.id}

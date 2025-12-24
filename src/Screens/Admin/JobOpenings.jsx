@@ -14,7 +14,7 @@ const jobs = [
     type: "Full-time",
     category: "Quality Assurance",
     description:
-      "Oversee quality control processes and ensure food safety standards are met.",
+      "Oversee quality control processes and ensure safety standards are met.",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const jobs = [
     type: "Internship",
     category: "Marketing",
     description:
-      "Assist the marketing team in campaign creation and social media management.",
+      "Assist the marketing team and social media management.",
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ const jobs = [
 
 const JobOpenings = () => {
   return (
-    <div className="p-6 max-w-6xl mx-auto bg-blue-950">
+    <div className="p-6 w-full bg-blue-950">
       <h1 className="text-2xl font-bold text-white mb-6">
         Job Openings <span>({jobs.length})</span>
       </h1>
@@ -55,7 +55,7 @@ const JobOpenings = () => {
             key={job.id}
             className="bg-black/40 border border-white/20 rounded-xl p-5 text-white "
           >
-            <div className="flex justify-between items-start">
+            <div className="flex justify-between">
               <div>
                 <h2 className="text-xl font-semibold">{job.title}</h2>
               </div>
@@ -73,15 +73,15 @@ const JobOpenings = () => {
               <p className="flex items-center gap-2 mt-1">
                 <FaBuilding className="text-blue-700" /> {job.company}
               </p>
-              <span className="flex items-center gap-2">
+              <p className="flex items-center gap-2">
                 <FaMapMarkerAlt className="text-red-500" /> {job.location}
-              </span>
-              <span className="flex items-center gap-2">
+              </p>
+              <p className="flex items-center gap-2">
                 <FaMoneyBillWave className="text-yellow-500" /> {job.salary}
-              </span>
-              <span className="flex items-center gap-2">
+              </p>
+              <p className="flex items-center gap-2">
                 <MdWork className="text-purple-600" /> {job.experience}
-              </span>
+              </p>
             </div>
 
             <div className="flex justify-between">

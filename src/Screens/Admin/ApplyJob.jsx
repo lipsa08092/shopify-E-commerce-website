@@ -12,7 +12,6 @@ const ApplyJob = () => {
   const navigate = useNavigate();
 
   const job = jobs.find((j) => j.id === Number(id));
-
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -26,13 +25,12 @@ const ApplyJob = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const oldApplications =
       JSON.parse(localStorage.getItem("applications")) || [];
 
     const newApplication = {
-      id: Date.now(),
       ...form,
+      id: Date.now(),
       jobTitle: job.title,
       company: job.company,
       location: job.location,
@@ -40,12 +38,7 @@ const ApplyJob = () => {
       appliedAt: new Date().toLocaleDateString(),
     };
 
-    localStorage.setItem(
-      "applications",
-      JSON.stringify([...oldApplications, newApplication])
-    );
-
-    alert("Application submitted successfully!");
+    localStorage.setItem("applications",JSON.stringify([...oldApplications, newApplication]));
     navigate("/admin/jobOpenings");
   };
 
