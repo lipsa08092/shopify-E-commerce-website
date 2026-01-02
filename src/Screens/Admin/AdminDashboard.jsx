@@ -81,7 +81,6 @@ const Dashboard = () => {
 
       {/* products categories */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-
         <div className="flex items-center gap-4 p-5 rounded-xl backdrop-blur-xl bg-black/30 border border-white/20 text-white">
           <div className="p-3 rounded-lg bg-green-500/50">
             <FiTag size={24} className="text-green-500" />
@@ -119,17 +118,16 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      
       {/* Quick Actions & Best Selling Products */}
-<div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-10">
-
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-10">
         <div className="bg-black/30 backdrop-blur-xl border border-white/20 rounded-2xl p-6 text-white">
           <div className="flex gap-2 mb-6">
             <FaRegCalendarCheck className="mt-2 text-xl" />
             <h2 className="text-2xl font-semibold">Quick Actions</h2>
           </div>
 
-         <div className="grid grid-cols-2 gap-4 text-sm">
-
+          <div className="grid grid-cols-2 gap-4 text-sm">
             <div
               onClick={() => {
                 navigate("/admin/categories");

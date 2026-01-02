@@ -11,9 +11,7 @@ function AdminLogin() {
 
   const handleLogin = () => {
     const storedAdmin = JSON.parse(localStorage.getItem("users")) || [];
-    const admin = storedAdmin.find(
-      (a) => a.email === email && a.password === password && a.role === "admin"
-    );
+    const admin = storedAdmin.find((a) => a.email === email && a.password === password && a.role === "admin");
     if (!admin) {
       alert("Admin account not found!");
       return;
@@ -25,7 +23,7 @@ function AdminLogin() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center px-4"
+      className="min-h-screen flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage:
           "url('https://watermark.lovepik.com/photo/40008/0007.jpg_wh1200.jpg')",
@@ -48,22 +46,22 @@ function AdminLogin() {
 
         {/* Email */}
         <div className="flex items-center bg-white/20 rounded-lg px-3 mb-4">
-          <FiMail className="opacity-70" />
+          <FiMail className="text-gray-300" />
           <input
             type="email"
             placeholder="Email address"
-            className="bg-transparent w-full p-3 outline-none text-white placeholder-white/70 text-sm"
+            className="bg-transparent w-full p-3 outline-none text-white placeholder-gray-300 text-sm"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
         {/* Password */}
         <div className="flex items-center bg-white/20 rounded-lg px-3 mb-2">
-          <FiLock className="opacity-70" />
+          <FiLock className="text-gray-300" />
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
-            className="bg-transparent w-full p-3 outline-none text-white placeholder-white/70 text-sm"
+            className="bg-transparent w-full p-3 outline-none text-white placeholder-gray-300 text-sm"
             onChange={(e) => setPassword(e.target.value)}
           />
           <button

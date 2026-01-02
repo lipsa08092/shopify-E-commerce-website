@@ -21,8 +21,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className="w-52 relative h-screen flex flex-col justify-between
-      bg-gradient-to-b from-[#35353f] to-[#2b2b2f] text-white"
+      className="w-52 relative h-screen flex flex-col justify-between bg-gradient-to-b from-[#35353f] to-[#2b2b2f] text-white"
     >
       <ul className="px-3 mt-6 space-y-2">
         {/* Dashboard */}

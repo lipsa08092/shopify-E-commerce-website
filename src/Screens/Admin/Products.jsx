@@ -3,20 +3,66 @@ import { FiPlus } from "react-icons/fi";
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [newProduct, setNewProduct] = useState({
+    title: "",
+    category: "",
+    quantity: "",
+    status: "Popular",
+    img: "",
+  });
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("products")) || [];
     setProducts(data);
   }, []);
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setNewProduct({ ...newProduct, img: reader.result });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSaveProduct = () => {
+    const product = {
+      id: Date.now(),
+      img: newProduct.img,
+      title: newProduct.title,
+      category: newProduct.category,
+      quantity: Number(newProduct.quantity),
+      status: newProduct.status,
+    };
+    const updateProducts = [...products, product];
+    setProducts(updateProducts);
+
+    localStorage.setItem("products", JSON.stringify(updateProducts));
+    setNewProduct({
+      title: "",
+      category: "",
+      quantity: "",
+      status: "Popular",
+      img: "",
+    });
+    setIsOpen(false);
+  };
+
   return (
     <div className="p-4 md:p-6 min-h-screen bg-blue-950 text-white">
       <div className="mb-8 flex justify-between items-center">
         <h1 className="text-3xl font-serif font-bold">Products Management</h1>
-        <div className="flex gap-2 bg-orange-600 text-white font-semibold py-2 px-3 rounded-xl">
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="flex gap-2 bg-orange-600 text-white font-semibold py-2 px-3 rounded-xl"
+        >
           <FiPlus className="mt-1" />
-          <button>Add New</button>
-        </div>
+          Add New
+        </button>
       </div>
 
       {/*desktop card*/}
@@ -95,6 +141,77 @@ function Products() {
           </div>
         ))}
       </div>
+      {isOpen && (
+        <div className="fixed inset-0 bg-black flex justify-center items-center z-50">
+          <div className="bg-blue-900 p-6 rounded-xl w-[500px] md:w-[400px] ">
+            <h2 className="text-xl font-bold mb-4">Add Product</h2>
+
+            <input
+              type="text"
+              placeholder="Product Name"
+              className="w-full mb-3 p-2 rounded text-black placeholder:text-gray-600 bg-gray-300"
+              value={newProduct.title}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, title: e.target.value })
+              }
+            />
+
+            <input
+              type="text"
+              placeholder="Category"
+              className="w-full mb-3 p-2 rounded text-black placeholder:text-gray-600 bg-gray-300 "
+              value={newProduct.category}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, category: e.target.value })
+              }
+            />
+
+            <input
+              type="number"
+              placeholder="Quantity"
+              className="w-full mb-3 p-2 rounded text-black placeholder:text-gray-600 bg-gray-300"
+              value={newProduct.quantity}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, quantity: e.target.value })
+              }
+            />
+
+            <select
+              className="w-full mb-4 p-2 rounded text-black bg-gray-300"
+              value={newProduct.status}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, status: e.target.value })
+              }
+            >
+              <option>Popular</option>
+              <option>Trending</option>
+            </select>
+
+            <input
+              type="file"
+              accept="image/*"
+              className="w-full mb-3 p-2 rounded bg-white"
+              onChange={handleImageChange}
+            />
+
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="px-4 py-2 bg-gray-500 rounded"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleSaveProduct}
+                className="px-4 py-2 bg-orange-600 rounded"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

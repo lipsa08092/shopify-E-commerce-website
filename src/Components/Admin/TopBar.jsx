@@ -21,15 +21,11 @@ const Topbar = () => {
   };
 
   return (
-    <div
-      className="relative h-16 w-full flex items-center justify-between px-6 bg-gradient-to-r from-[#8f7ccf] to-[#9b8fcf]"
-    >
+    <div className="relative h-16 w-full flex items-center justify-between px-6 bg-gradient-to-r from-[#8f7ccf] to-[#9b8fcf]">
       {/* Logo */}
       <div className="flex items-center">
         <img
-          src=
-            'https://www.pngall.com/wp-content/uploads/13/Shopify-Logo-PNG-File.png'
-          
+          src="https://www.pngall.com/wp-content/uploads/13/Shopify-Logo-PNG-File.png"
           alt="shopify"
           className="h-16 w-full"
         />
@@ -37,27 +33,19 @@ const Topbar = () => {
 
       <div className="flex items-center gap-4">
         <div className="items-center bg-[#7c6ab8] px-2 py-2 rounded-full cursor-pointer">
-          <div className="w-5 h-5 rounded-full items-center justify-center text-white font-semibold">
-            <FaRegBell  size={18} />
-          </div>
+          <FaRegBell size={18} />
         </div>
 
         <div className="items-center bg-[#7c6ab8] px-2 py-2 rounded-full cursor-pointer">
-          <div className="w-5 h-5 rounded-full items-center justify-center text-white font-semibold">
-            <IoIosMail size={18} />
-          </div>
+          <IoIosMail size={18} />
         </div>
 
         <div className="items-center bg-[#7c6ab8] px-2 py-2 rounded-full cursor-pointer">
-          <div className="w-5 h-5 rounded-full items-center justify-center text-white font-semibold">
-            <IoSettings size={18} />
-          </div>
+          <IoSettings size={18} />
         </div>
 
         <div className="items-center bg-[#7c6ab8] px-2 py-2 rounded-full cursor-pointer">
-          <div className="w-5 h-5 rounded-full items-center justify-center text-white font-semibold">
-            <IoMdHelpCircle size={18} />
-          </div>
+          <IoMdHelpCircle size={18} />
         </div>
 
         {/* Profile */}

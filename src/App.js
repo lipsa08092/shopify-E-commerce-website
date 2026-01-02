@@ -29,10 +29,15 @@ import Applications from "./Screens/Admin/Applications";
 import ApplyJob from "./Screens/Admin/ApplyJob";
 
 function App() {
-  useEffect(() => {
+ useEffect(() => {
+  if (!localStorage.getItem("products")) {
     localStorage.setItem("products", JSON.stringify(products));
+  }
+
+  if (!localStorage.getItem("categories")) {
     localStorage.setItem("categories", JSON.stringify(categoryData));
-  }, []);
+  }
+}, []);
 
   useEffect(() => {
     setDefaultAdmin();
@@ -66,7 +71,6 @@ function App() {
           <Route path="applications" element={<Applications />} />
         </Route>
         <Route path="/career/apply/:id" element={<ApplyJob />} />
-
         <Route path="/404error" element={<Error />} />
       </Routes>
     </BrowserRouter>

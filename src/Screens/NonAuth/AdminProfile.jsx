@@ -26,7 +26,7 @@ const AdminProfile = () => {
   };
 
   return (
-    <div className="p-4 sm:p-10 flex justify-center bg-blue-950 min-h-screen">
+    <div className="p-4 sm:p-10 bg-blue-950 min-h-screen">
       <div className="w-full md:h-96 bg-black/50 rounded-2xl text-white overflow-hidden flex flex-col md:flex-row">
         <div className="md:w-1/3 bg-gray-900 flex flex-col items-center justify-center p-6">
           <img
@@ -79,9 +79,9 @@ const AdminProfile = () => {
         </div>
       </div>
 
-      {/* MODAL */}
+      {/* modal */}
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/60 px-4">
+        <div className="fixed inset-0 flex items-center justify-center bg-black">
           <div className="bg-gray-900 w-full max-w-md rounded-xl p-6 border border-white/20">
             <h2 className="text-xl font-semibold mb-4">Edit Profile</h2>
 
