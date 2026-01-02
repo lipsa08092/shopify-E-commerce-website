@@ -38,7 +38,7 @@ function Footer() {
               111 Bijoy sarani, Dhaka, <br />
               DH 1515, Bangladesh.
             </p>
-            <p className="text-sm  text-gray-200">exclusive@gmail.com</p>
+            <p className="text-sm  text-gray-200">Shopify@gmail.com</p>
             <p className="text-sm text-gray-200">+88015-88888-9999</p>
           </div>
         </div>
