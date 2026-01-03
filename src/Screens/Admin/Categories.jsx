@@ -58,10 +58,10 @@ function Categories() {
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="flex gap-2 bg-orange-600 text-white font-semibold py-2 px-3 rounded-xl"
+          className="flex gap-2 bg-orange-600 text-sm text-white font-semibold py-2 px-3 rounded-xl"
         >
-          <FiPlus className="mt-1" />
-          Add New
+          <FiPlus className="mt-3 lg:mt-1" />
+          <span>Add New</span>
         </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">

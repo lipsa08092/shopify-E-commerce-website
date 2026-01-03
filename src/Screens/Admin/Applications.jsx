@@ -44,7 +44,7 @@ const Applications = () => {
           </div>
 
           <div className="flex justify-between items-center gap-10 text-sm text-gray-300 mt-3">
-            <div className="flex justify-between items-center gap-10 text-lg text-gray-400">
+            <div className="flex flex-col lg:flex-row gap-3 lg:gap-10 text-lg text-gray-400">
               <span className="flex  items-center gap-2">
                 <FaEnvelope  className="text-green-600"/> {app.email}
               </span>
@@ -68,7 +68,7 @@ const Applications = () => {
             </select>
           </div>
 
-          <div className="flex justify-between items-center mt-2">
+          <div className="flex flex-col lg:flex-row justify-between gap-1 lg:gap-6 mt-2">
             <p className="text-gray-300 mt-3 text-md">{app.message}</p>
 
             <div className="flex justify-between items-center mt-4">

@@ -69,7 +69,7 @@ const JobOpenings = () => {
               </div>
             </div>
 
-            <div className="flex gap-20 text-lg text-gray-400 mt-4">
+            <div className="flex flex-col lg:flex-row gap-3 lg:gap-20  text-lg text-gray-400 mt-4">
               <p className="flex items-center gap-2 mt-1">
                 <FaBuilding className="text-blue-700" /> {job.company}
               </p>
@@ -87,10 +87,10 @@ const JobOpenings = () => {
             <div className="flex justify-between">
               <p className="text-gray-400 mt-6 text-md">{job.description}</p>
 
-              <div className="mt-4">
+              <div className="mt-8">
                 <Link
                   to={`/career/apply/${job.id}`}
-                  className="inline-block px-5 py-2 bg-orange-600 hover:bg-orange-700 rounded-lg text-sm font-medium"
+                  className="inline-block px-5 py-2 bg-orange-600 hover:bg-orange-700 rounded-lg text-xs lg:text-sm font-medium"
                 >
                   Apply Now
                 </Link>
