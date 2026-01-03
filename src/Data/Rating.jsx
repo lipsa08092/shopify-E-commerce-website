@@ -1,10 +1,12 @@
 import React from "react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
-function Rating({ star, rating }) {
-  const fullStars = Math.floor(star);
+function Rating({ star = 0, rating = 0 }) {
+  const value = Math.min(Math.max(Number(star) || 0, 0), 5);
+
+  const fullStars = Math.floor(value);
   const hasHalfStar = star % 1 !== 0;
-  const emptyStars = 5 - Math.ceil(star);
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
   return (
     <div className="flex items-center gap-1 mt-1">
@@ -21,7 +23,7 @@ function Rating({ star, rating }) {
       ))}
 
       <span className="text-gray-500 text-xs ml-1">
-        ({rating})
+        ({Number(rating) || 0})
       </span>
     </div>
   );

@@ -9,10 +9,11 @@ import { HiOutlineArrowPathRoundedSquare } from "react-icons/hi2";
 import useWishlist from "../../Components/Hooks/useWishlist";
 import { IoEye } from "react-icons/io5";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
-import { products } from "../../Data/Products";
 
 function ProductDetails() {
   const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [allProducts, setAllProducts] = useState([]);
   const { addToCart } = useCart();
   const [qty, setQty] = useState(1);
   const { wishlist, toggleWishlist } = useWishlist();
@@ -20,16 +21,22 @@ function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState(null);
   const navigate = useNavigate();
 
-  const product = products.find((p) => p.id === Number(id));
+  useEffect(() => {
+  const stored = JSON.parse(localStorage.getItem("products")) || [];
+
+  setAllProducts(stored);
+
+  const found = stored.find((p) => String(p.id) === String(id));
+  setProduct(found);
+}, [id]);
+
 
   if (!product) {
     return <p className="text-center py-20">Product not found</p>;
   }
- const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-  
-
+  //  const handleClick = () => {
+  //     window.scrollTo({ top: 0, behavior: "smooth" });
+  //   };
 
   return (
     <div className="py-20 mx-4 sm:mx-10 lg:mx-20">
@@ -45,7 +52,6 @@ function ProductDetails() {
             src={product.img}
             alt={product.title}
             className="h-80 object-contain"
-            
           />
         </div>
         {/* Details */}
@@ -76,7 +82,9 @@ function ProductDetails() {
                   <span
                     key={index}
                     onClick={() => setSelectedColor(color)}
-                    className={`w-6 h-6 rounded-full cursor-pointer border ${selectedColor === color ? "ring-2 ring-black" : ""}`}
+                    className={`w-6 h-6 rounded-full cursor-pointer border ${
+                      selectedColor === color ? "ring-2 ring-black" : ""
+                    }`}
                     style={{ backgroundColor: color }}
                   />
                 ))}
@@ -183,8 +191,8 @@ function ProductDetails() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          {products.slice(0, 4).map((item) => (
-            <div key={item.id} className="w-[full]">
+          {allProducts.slice(0, 4).map((item) => (
+            <div key={item.id} className="w-full">
               <div className="p-3 rounded-lg relative  hover:shadow-md transition">
                 <div className="relative bg-gray-100 pt-5 pb-3 flex items-center justify-center">
                   <img

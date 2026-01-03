@@ -5,6 +5,11 @@ function Products() {
   const [products, setProducts] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [newProduct, setNewProduct] = useState({
+    colors: ["#ef4444", "#2563eb"],
+    oldPrice: "",
+    price: "",
+    rating: "",
+    star: "",
     title: "",
     category: "",
     quantity: "",
@@ -21,11 +26,9 @@ function Products() {
     const file = e.target.files[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setNewProduct({ ...newProduct, img: reader.result });
-    };
-    reader.readAsDataURL(file);
+    const imageURL = URL.createObjectURL(file);
+
+  setNewProduct({ ...newProduct, img: imageURL });
   };
 
   const handleSaveProduct = () => {
@@ -36,12 +39,22 @@ function Products() {
       category: newProduct.category,
       quantity: Number(newProduct.quantity),
       status: newProduct.status,
+      colors: ["#ef4444", "#2563eb"],
+      oldPrice: newProduct.oldPrice,
+      price: newProduct.price,
+      rating: newProduct.rating,
+      star: newProduct.star,
     };
     const updateProducts = [...products, product];
     setProducts(updateProducts);
 
     localStorage.setItem("products", JSON.stringify(updateProducts));
     setNewProduct({
+      colors: ["#ef4444", "#2563eb"],
+      oldPrice: "",
+      price: "",
+      rating: "",
+      star: "",
       title: "",
       category: "",
       quantity: "",
@@ -142,8 +155,8 @@ function Products() {
         ))}
       </div>
       {isOpen && (
-        <div className="fixed inset-0 bg-black flex justify-center items-center z-50">
-          <div className="bg-blue-900 p-6 rounded-xl w-[500px] md:w-[400px] ">
+        <div className="fixed inset-0 bg-black flex justify-center items-center z-50 overflow-y-auto py-10">
+          <div className="bg-blue-900 p-6 rounded-xl w-[600px] md:w-[500px] h-[600px]">
             <h2 className="text-xl font-bold mb-4">Add Product</h2>
 
             <input
@@ -173,6 +186,42 @@ function Products() {
               value={newProduct.quantity}
               onChange={(e) =>
                 setNewProduct({ ...newProduct, quantity: e.target.value })
+              }
+            />
+            <input
+              type="number"
+              placeholder="Price"
+              className="w-full mb-3 p-2 rounded text-black placeholder:text-gray-600 bg-gray-300"
+              value={newProduct.price}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, price: e.target.value })
+              }
+            />
+            <input
+              type="number"
+              placeholder="OldPrice"
+              className="w-full mb-3 p-2 rounded text-black placeholder:text-gray-600 bg-gray-300"
+              value={newProduct.oldPrice}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, oldPrice: e.target.value })
+              }
+            />
+            <input
+              type="number"
+              placeholder="Rating"
+              className="w-full mb-3 p-2 rounded text-black placeholder:text-gray-600 bg-gray-300"
+              value={newProduct.rating}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, rating: e.target.value })
+              }
+            />
+            <input
+              type="number"
+              placeholder="Star"
+              className="w-full mb-3 p-2 rounded text-black placeholder:text-gray-600 bg-gray-300"
+              value={newProduct.star}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, star: e.target.value })
               }
             />
 

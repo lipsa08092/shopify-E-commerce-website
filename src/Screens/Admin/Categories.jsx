@@ -20,11 +20,9 @@ function Categories() {
     const file = e.target.files[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setNewCategory({ ...newCategory, img: reader.result });
-    };
-    reader.readAsDataURL(file);
+    const imageURL = URL.createObjectURL(file);
+
+    setNewCategory({ ...newCategory, img: imageURL });
   };
 
   const handleSaveCategory = () => {
@@ -88,7 +86,7 @@ function Categories() {
               onClick={() => handleDeleteCategory(item.id)}
               className="absolute top-12 right-3 bg-red-600 text-sm px-2 py-2 rounded-full opacity-0 hover:opacity-100"
             >
-              <MdAutoDelete/>
+              <MdAutoDelete />
             </button>
           </div>
         ))}

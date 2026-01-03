@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IoMdHeartEmpty ,IoMdHeart } from "react-icons/io";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
 import Rating from "../../Data/Rating";
 import useWishlist from "../Hooks/useWishlist";
@@ -11,26 +11,26 @@ function BestSelling() {
   const [viewAll, setViewAll] = useState(true);
   const [allProducts, setAllProducts] = useState([]);
   const { wishlist, toggleWishlist } = useWishlist();
-  const { addToCart} = useCart();
+  const { addToCart } = useCart();
   const navigate = useNavigate();
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
     setProducts(storedProducts.slice(5, 9));
     setAllProducts(storedProducts);
+    console.log("storedProducts:", storedProducts);
+    console.log("Is Array:", Array.isArray(storedProducts));
   }, []);
-  
+
   const handleViewAll = () => {
-    if (viewAll) {
-      setProducts(allProducts);
-    } else {
-      setProducts(allProducts.slice(5, 9));
-    }
+    if (!Array.isArray(allProducts)) return;
+    setProducts(viewAll ? [...allProducts] : allProducts.slice(5, 9));
     setViewAll(!viewAll);
   };
+
   const handleClick = () => {
-    window.scrollTo({top: 0, behavior: "smooth"});
-  }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="py-10 px-5 sm:px-10 lg:px-20">
@@ -46,13 +46,13 @@ function BestSelling() {
           onClick={handleViewAll}
           className="text-sm text-gray-100 px-5 py-2 bg-red-500 hover:bg-red-600 rounded-md"
         >
-          {viewAll ? "View All" : "Close"}
+          {viewAll ? "View All" : "View Less"}
         </button>
       </div>
 
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((item) => (
-          <div key={item.id} className="w-full">
+        {products.map((item, index) => (
+          <div key={`${item.id}-${index}`} className="w-full">
             <div className="p-3 rounded-lg relative  hover:shadow-md transition">
               <div className="relative bg-gray-100 pt-5 pb-3 flex items-center justify-center">
                 <img
@@ -60,14 +60,15 @@ function BestSelling() {
                   className="w-full h-40 sm:h-44 object-contain"
                   alt=""
                   onClick={() => {
-                    navigate (`/product/${item.id}`)
+                    navigate(`/product/${item.id}`);
                     handleClick();
                   }}
                 />
 
-                <button 
-                onClick={() => addToCart(item)}
-                className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300">
+                <button
+                  onClick={() => addToCart(item)}
+                  className="absolute bottom-0 w-full opacity-0 hover:opacity-100 bg-black text-white font-semibold p-2 transition-all duration-300"
+                >
                   Add To Cart
                 </button>
               </div>
@@ -83,7 +84,7 @@ function BestSelling() {
                   className="absolute top-6 right-6 text-2xl cursor-pointer bg-white rounded-full text-gray-400"
                 />
               )}
-              
+
               <IoEye className="absolute top-14 right-6 text-2xl cursor-pointer bg-white rounded-full hover:text-red-500" />
 
               <p className="mt-3 text-sm font-medium">{item.title}</p>

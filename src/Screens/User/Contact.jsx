@@ -42,11 +42,11 @@ function Contact() {
             </p>
 
             <p className="text-black text-sm">
-              Emails: customer@exclusive.com
+              Emails: customer@shopify.com
             </p>
 
             <p className="text-black text-sm ">
-              Emails: support@exclusive.com
+              Emails: support@shopify.com
             </p>
           </div>
         </div>

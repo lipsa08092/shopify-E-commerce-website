@@ -52,7 +52,6 @@ export default function NewArrival() {
               </button>
             </div>
           </div>
-       
 
           {/* Speakers */}
           <div className="relative w-full h-[200px] sm:h-[220px] overflow-hidden bg-black">

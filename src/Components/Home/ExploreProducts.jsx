@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 function ExploreProducts() {
   const [products, setProducts] = useState([]);
-  const [allproducts, setAllProducts] = useState(true);
+  const [allProducts, setAllProducts] = useState(true);
   const [viewAll, setViewAll] = useState([]);
   const { wishlist, toggleWishlist } = useWishlist();
   const { addToCart } = useCart();
@@ -21,11 +21,7 @@ function ExploreProducts() {
   }, []);
 
   const handleViewAll = () => {
-    if (viewAll) {
-      setProducts(allproducts);
-    } else {
-      setProducts(allproducts.slice(0,8));
-    }
+    setProducts(viewAll ? [...allProducts] : allProducts.slice(5, 9));
     setViewAll(!viewAll);
   };
   const handleClick = () => {
@@ -46,7 +42,7 @@ function ExploreProducts() {
           onClick={handleViewAll}
           className="text-sm text-gray-100 px-5 py-2 bg-red-500 hover:bg-red-600 rounded-md"
         >
-          {viewAll ? "View All" : "Close"}
+          {viewAll ? "View All" : "View Less"}
         </button>
       </div>
 
